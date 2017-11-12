@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
+		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
+		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
+		DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CAC1FB8DAB8000EAE11 /* VideoPreviewViewController.m */; };
+		DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBBEA1FB7917F00291D45 /* AppDelegate.m */; };
+		DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBBED1FB7918000291D45 /* ErrorViewController.m */; };
+		DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDDBBBF21FB7918000291D45 /* Assets.xcassets */; };
+		DDDBBBF61FB7918000291D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDDBBBF41FB7918000291D45 /* LaunchScreen.storyboard */; };
+		DDDBBBF91FB7918000291D45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBBF81FB7918000291D45 /* main.m */; };
+		DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC071FB797DA00291D45 /* RecordingFlowController.m */; };
+		DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */; };
+		DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC0D1FB798C100291D45 /* UIViewController+Children.m */; };
+		DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC101FB79A8F00291D45 /* ASAppearance.m */; };
+		DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC171FB79C4D00291D45 /* PuppetCollectionViewCell.m */; };
+		DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC1A1FB7A28D00291D45 /* RecordingViewController.m */; };
+		DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */; };
+		DDDBBC211FB7A7E400291D45 /* AvatarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDBBC201FB7A7E400291D45 /* AvatarKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
+		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
+		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
+		DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingStatusViewController.m; sourceTree = "<group>"; };
+		DDCE6CA81FB8D9EF000EAE11 /* SharingFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharingFlowController.h; sourceTree = "<group>"; };
+		DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharingFlowController.m; sourceTree = "<group>"; };
+		DDCE6CAB1FB8DAB8000EAE11 /* VideoPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPreviewViewController.h; sourceTree = "<group>"; };
+		DDCE6CAC1FB8DAB8000EAE11 /* VideoPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPreviewViewController.m; sourceTree = "<group>"; };
+		DDDBBBE61FB7917F00291D45 /* AnimojiStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimojiStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDDBBBE91FB7917F00291D45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DDDBBBEA1FB7917F00291D45 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DDDBBBEC1FB7917F00291D45 /* ErrorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorViewController.h; sourceTree = "<group>"; };
+		DDDBBBED1FB7918000291D45 /* ErrorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErrorViewController.m; sourceTree = "<group>"; };
+		DDDBBBF21FB7918000291D45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DDDBBBF51FB7918000291D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DDDBBBF71FB7918000291D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDDBBBF81FB7918000291D45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DDDBBC001FB794B100291D45 /* AVTPuppetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTPuppetView.h; sourceTree = "<group>"; };
+		DDDBBC011FB794B100291D45 /* AVTAvatarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTAvatarView.h; sourceTree = "<group>"; };
+		DDDBBC021FB794B100291D45 /* AVTPuppet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTPuppet.h; sourceTree = "<group>"; };
+		DDDBBC061FB797DA00291D45 /* RecordingFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingFlowController.h; sourceTree = "<group>"; };
+		DDDBBC071FB797DA00291D45 /* RecordingFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingFlowController.m; sourceTree = "<group>"; };
+		DDDBBC091FB7987A00291D45 /* PuppetSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuppetSelectionViewController.h; sourceTree = "<group>"; };
+		DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PuppetSelectionViewController.m; sourceTree = "<group>"; };
+		DDDBBC0C1FB798C100291D45 /* UIViewController+Children.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Children.h"; sourceTree = "<group>"; };
+		DDDBBC0D1FB798C100291D45 /* UIViewController+Children.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Children.m"; sourceTree = "<group>"; };
+		DDDBBC0F1FB79A8F00291D45 /* ASAppearance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASAppearance.h; sourceTree = "<group>"; };
+		DDDBBC101FB79A8F00291D45 /* ASAppearance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASAppearance.m; sourceTree = "<group>"; };
+		DDDBBC161FB79C4D00291D45 /* PuppetCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuppetCollectionViewCell.h; sourceTree = "<group>"; };
+		DDDBBC171FB79C4D00291D45 /* PuppetCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PuppetCollectionViewCell.m; sourceTree = "<group>"; };
+		DDDBBC191FB7A28D00291D45 /* RecordingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
+		DDDBBC1A1FB7A28D00291D45 /* RecordingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
+		DDDBBC1C1FB7A73300291D45 /* ASPuppetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASPuppetView.h; sourceTree = "<group>"; };
+		DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASPuppetView.m; sourceTree = "<group>"; };
+		DDDBBC201FB7A7E400291D45 /* AvatarKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AvatarKit.framework; path = AnimojiStudio/AvatarKit/AvatarKit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DDDBBBE31FB7917F00291D45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDDBBC211FB7A7E400291D45 /* AvatarKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DDCE6C9C1FB87104000EAE11 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */,
+				DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		DDCE6CA71FB8D9CC000EAE11 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				DDCE6CA81FB8D9EF000EAE11 /* SharingFlowController.h */,
+				DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */,
+				DDCE6CAB1FB8DAB8000EAE11 /* VideoPreviewViewController.h */,
+				DDCE6CAC1FB8DAB8000EAE11 /* VideoPreviewViewController.m */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
+		DDDBBBDD1FB7917F00291D45 = {
+			isa = PBXGroup;
+			children = (
+				DDDBBBE81FB7917F00291D45 /* AnimojiStudio */,
+				DDDBBBE71FB7917F00291D45 /* Products */,
+				DDDBBC1F1FB7A7E400291D45 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DDDBBBE71FB7917F00291D45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBBE61FB7917F00291D45 /* AnimojiStudio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDDBBBE81FB7917F00291D45 /* AnimojiStudio */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC051FB7978D00291D45 /* Resources */,
+				DDDBBC151FB79C3900291D45 /* Views */,
+				DDCE6C9C1FB87104000EAE11 /* Core */,
+				DDDBBC041FB7978600291D45 /* Controllers */,
+				DDDBBC031FB7977F00291D45 /* Bootstrap */,
+				DDDBBBFF1FB794A400291D45 /* AvatarKit */,
+			);
+			path = AnimojiStudio;
+			sourceTree = "<group>";
+		};
+		DDDBBBFF1FB794A400291D45 /* AvatarKit */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC011FB794B100291D45 /* AVTAvatarView.h */,
+				DDDBBC021FB794B100291D45 /* AVTPuppet.h */,
+				DDDBBC001FB794B100291D45 /* AVTPuppetView.h */,
+			);
+			path = AvatarKit;
+			sourceTree = "<group>";
+		};
+		DDDBBC031FB7977F00291D45 /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC0F1FB79A8F00291D45 /* ASAppearance.h */,
+				DDDBBC101FB79A8F00291D45 /* ASAppearance.m */,
+				DDDBBBE91FB7917F00291D45 /* AppDelegate.h */,
+				DDDBBBEA1FB7917F00291D45 /* AppDelegate.m */,
+				DDDBBBF81FB7918000291D45 /* main.m */,
+			);
+			path = Bootstrap;
+			sourceTree = "<group>";
+		};
+		DDDBBC041FB7978600291D45 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC141FB79AF700291D45 /* Misc */,
+				DDDBBC131FB79AF400291D45 /* Error */,
+				DDDBBC121FB79AE700291D45 /* Recording */,
+				DDCE6CA71FB8D9CC000EAE11 /* Sharing */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDDBBC051FB7978D00291D45 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBBF21FB7918000291D45 /* Assets.xcassets */,
+				DDDBBBF41FB7918000291D45 /* LaunchScreen.storyboard */,
+				DDDBBBF71FB7918000291D45 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DDDBBC121FB79AE700291D45 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC061FB797DA00291D45 /* RecordingFlowController.h */,
+				DDDBBC071FB797DA00291D45 /* RecordingFlowController.m */,
+				DDDBBC091FB7987A00291D45 /* PuppetSelectionViewController.h */,
+				DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */,
+				DDDBBC191FB7A28D00291D45 /* RecordingViewController.h */,
+				DDDBBC1A1FB7A28D00291D45 /* RecordingViewController.m */,
+				DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */,
+				DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		DDDBBC131FB79AF400291D45 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBBEC1FB7917F00291D45 /* ErrorViewController.h */,
+				DDDBBBED1FB7918000291D45 /* ErrorViewController.m */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		DDDBBC141FB79AF700291D45 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC0C1FB798C100291D45 /* UIViewController+Children.h */,
+				DDDBBC0D1FB798C100291D45 /* UIViewController+Children.m */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		DDDBBC151FB79C3900291D45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC161FB79C4D00291D45 /* PuppetCollectionViewCell.h */,
+				DDDBBC171FB79C4D00291D45 /* PuppetCollectionViewCell.m */,
+				DDDBBC1C1FB7A73300291D45 /* ASPuppetView.h */,
+				DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDDBBC1F1FB7A7E400291D45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDDBBC201FB7A7E400291D45 /* AvatarKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDDBBBE51FB7917F00291D45 /* AnimojiStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDDBBBFC1FB7918000291D45 /* Build configuration list for PBXNativeTarget "AnimojiStudio" */;
+			buildPhases = (
+				DDDBBBE21FB7917F00291D45 /* Sources */,
+				DDDBBBE31FB7917F00291D45 /* Frameworks */,
+				DDDBBBE41FB7917F00291D45 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnimojiStudio;
+			productName = AnimojiStudio;
+			productReference = DDDBBBE61FB7917F00291D45 /* AnimojiStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDDBBBDE1FB7917F00291D45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Guilherme Rambo";
+				TargetAttributes = {
+					DDDBBBE51FB7917F00291D45 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DDDBBBE11FB7917F00291D45 /* Build configuration list for PBXProject "AnimojiStudio" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DDDBBBDD1FB7917F00291D45;
+			productRefGroup = DDDBBBE71FB7917F00291D45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDDBBBE51FB7917F00291D45 /* AnimojiStudio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DDDBBBE41FB7917F00291D45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDDBBBF61FB7918000291D45 /* LaunchScreen.storyboard in Resources */,
+				DDDBBBF31FB7918000291D45 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDDBBBE21FB7917F00291D45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
+				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
+				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
+				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
+				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
+				DDDBBBF91FB7918000291D45 /* main.m in Sources */,
+				DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */,
+				DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */,
+				DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */,
+				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
+				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
+				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
+				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
+				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DDDBBBF41FB7918000291D45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDDBBBF51FB7918000291D45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DDDBBBFA1FB7918000291D45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DDDBBBFB1FB7918000291D45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DDDBBBFD1FB7918000291D45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8C7439RJLG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AnimojiStudio/AvatarKit",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.guilhermerambo.AnimojiStudio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		DDDBBBFE1FB7918000291D45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8C7439RJLG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AnimojiStudio/AvatarKit",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.guilhermerambo.AnimojiStudio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DDDBBBE11FB7917F00291D45 /* Build configuration list for PBXProject "AnimojiStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDDBBBFA1FB7918000291D45 /* Debug */,
+				DDDBBBFB1FB7918000291D45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDDBBBFC1FB7918000291D45 /* Build configuration list for PBXNativeTarget "AnimojiStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDDBBBFD1FB7918000291D45 /* Debug */,
+				DDDBBBFE1FB7918000291D45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DDDBBBDE1FB7917F00291D45 /* Project object */;
+}

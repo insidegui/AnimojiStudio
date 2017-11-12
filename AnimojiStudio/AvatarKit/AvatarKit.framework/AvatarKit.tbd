@@ -1,0 +1,57 @@
+---
+archs:           [ arm64 ]
+platform:        ios
+install-name:    /System/Library/PrivateFrameworks/AvatarKit.framework/AvatarKit
+current-version: 181.3
+exports:         
+  - archs:           [ arm64 ]
+    symbols:         [ _ARBlendShapeLocationFromIndex, _ARBlendShapeLocationToAVTMorphTargetName, 
+                       _ARBlendShapeLocationToIndex, _AVTAssetIndexToAssetUID, 
+                       _AVTAssetUIDFromPackAndAssetID, _AVTAssetUIDToAssetIndex, 
+                       _AVTAvatarBackgroundColorDidUpdate, _AVTAvatarComponentDidChange, 
+                       _AVTAvatarComponentDidUpdate, _AVTAvatarComponentSyncUpdateNotification, 
+                       _AVTAvatarDidAddPreset, _AVTAvatarEyeColorDidUpdate, 
+                       _AVTAvatarHairVariantDidChange, _AVTAvatarMorphVariantDidChange, 
+                       _AVTAvatarPhysicalizedMorpherSpecializationSimulationFactors, 
+                       _AVTAvatarRigDidChange, _AVTAvatarSkinDidUpdate, 
+                       _AVTAvatarSpecializationPhysicalizedMorpher, _AVTBoneParameters, 
+                       _AVTColorPalettes, _AVTComponentTypeToString, _AVTDebugViewValueForIndex, 
+                       _AVTDecodeColor, _AVTDecodeFloat, _AVTDecodeMaterial, 
+                       _AVTEncodeColor, _AVTEncodeFloat, _AVTEncodeMaterial, 
+                       _AVTErrorDomain, _AVTFacialFeatureToString, _AVTGetColorComponents, 
+                       _AVTLivePreviewAnimationKey, _AVTMaterialNameForTemplateMaterialName, 
+                       _AVTMorphTargetNameFromARIndex, _AVTMovieCodecKey, 
+                       _AVTMovieRateKey, _AVTMovieSizeKey, _AVTPresetCategoryToComponentType, 
+                       _AVTPresetCategoryToFacialFeature, _AVTPresetCategoryToString, 
+                       _AVTPuppetColorVariant, _AVTPuppetThumbnailSize, 
+                       _AVTPuppetThumbnailSizeLarge, _AVTPuppetThumbnailSizeSmall, 
+                       _AVTRigFromString, _AVTRigToString, _AVTSnapshotAnimatedKey, 
+                       _AVTSnapshotAnimationClipKey, _AVTSnapshotAnimationDurationKey, 
+                       _AVTSnapshotAntialiasedKey, _AVTSnapshotAsH264Key, 
+                       _AVTSnapshotBackgroundColorKey, _AVTSnapshotBodilessKey, 
+                       _AVTSnapshotDestinationPathKey, _AVTSnapshotJitteredKey, 
+                       _AVTSnapshotQualityKey, _AVTSnapshotRateKey, _AVTSnapshotScaleFactorKey, 
+                       _AVTSnapshotSizeKey, _AVTSnapshotUpscaleKey, _AVTTemplateMaterialWithName, 
+                       _AvatarKitVersionNumber, _AvatarKitVersionString, 
+                       _PerfTimesAverageLatency, _PerfTimesAverageLatencyForKind, 
+                       _PerfTimesCreate, _PerfTimesForEach, _PerfTimesFree, 
+                       _PerfTimesMax, _PerfTimesMaxForKind, _PerfTimesMin, 
+                       _PerfTimesMinForKind, _PerfTimesNextIndex, _PerfTimesPush, 
+                       _sharedInstance ]
+    objc-classes:    [ _AVTAnimationClip, _AVTAnimationExtra, _AVTAsset, 
+                       _AVTAssetInfo, _AVTAvatar, _AVTAvatarAssetLibrary, 
+                       _AVTAvatarEditorView, _AVTAvatarInstance, _AVTAvatarSkeletonInstance, 
+                       _AVTAvatarView, _AVTColorPreset, _AVTComponent, 
+                       _AVTComponentInstance, _AVTCorrectiveMorpherDescriptor, 
+                       _AVTEncodingContext, _AVTMaterial, _AVTParameterValue, 
+                       _AVTPhysicalizedMorpherDescriptor, _AVTPhysicsController, 
+                       _AVTPhysicsRig, _AVTPreset, _AVTPupilDirectionDescriptor, 
+                       _AVTPuppet, _AVTPuppetDebugView, _AVTPuppetGridView, 
+                       _AVTPuppetView, _AVTResourceLocator, _AVTRig, _AVTRigSettings, 
+                       _AVTRigValue, _AVTSnapshotBuilder ]
+    objc-ivars:      [ _AVTPreset._asset, _AVTPreset._category, _AVTPreset._identifier, 
+                       _AVTPreset._intensity, _AVTPreset._modularCompositionIndex, 
+                       _AVTPreset._params, _AVTPreset._rigs, _AVTPreset._variant, 
+                       _AVTRig._elevation, _AVTRig._owner, _AVTRig._rotation, 
+                       _AVTRig._scale, _AVTRig._spacing, _AVTRig._type ]
+...
