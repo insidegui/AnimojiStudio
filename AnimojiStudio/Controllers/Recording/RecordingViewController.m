@@ -29,6 +29,8 @@
 
 @implementation RecordingViewController
 
+NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -70,6 +72,8 @@
     
     [self _installInstructionLabel];
     [self _installSettingsUI];
+    
+    [self.microphoneSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:kMicrophoneEnabled]];
 }
 
 - (void)_installInstructionLabel
@@ -159,6 +163,7 @@
 - (IBAction)microphoneEnabledSwitchAction:(id)sender
 {
     self.microphoneEnabled = self.microphoneSwitch.isOn;
+    [[NSUserDefaults standardUserDefaults] setBool:self.microphoneEnabled forKey:kMicrophoneEnabled];
 }
 
 @end
