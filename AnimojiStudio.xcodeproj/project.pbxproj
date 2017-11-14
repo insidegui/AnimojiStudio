@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD1D03BA1FBB0AB2006A47A6 /* ARConfiguration+Overrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARConfiguration+Overrides.h"; sourceTree = "<group>"; };
+		DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ARConfiguration+Overrides.m"; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 			children = (
 				DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */,
 				DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */,
+				DD1D03BA1FBB0AB2006A47A6 /* ARConfiguration+Overrides.h */,
+				DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
+				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
