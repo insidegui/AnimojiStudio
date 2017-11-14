@@ -1,3 +1,5 @@
+If you're into cute characters, try [ChibiStudio](https://getchibistudio.com) 😉
+
 <h1 style="color:#5501FF">AnimojiStudio</h1>
 Record Animoji videos with unlimited duration with this standalone app.
 
