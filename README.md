@@ -5,8 +5,8 @@ This app uses the private AvatarKit framework, the same one that's used by Apple
 
 You can also choose to record with or without audio.
 
-***NOTE: This app uses a private framework, therefore it will not be published on the App Store and can only be installed by compiling and running from Xcode.***
+***NOTE: This app uses a private framework, therefore it will not be published on the App Store and can only be installed by compiling and running from Xcode or sideloading the IPA. Please do not file issues about installation problems, that's out of the scope of this project.***
 
 ![screens](./screenshots/AnimojiStudio_Screens.png)
 
-You can also try to install the app on your iPhone X using Cydia Impactor and the [prebuilt IPA](https://github.com/insidegui/AnimojiStudio/releases/tag/1.0).
+You can also try to install the app on your iPhone X using Cydia Impactor and the [prebuilt IPA](https://github.com/insidegui/AnimojiStudio/releases/latest).
