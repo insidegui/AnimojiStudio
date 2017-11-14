@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */; };
+		DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */; };
+		DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DC1FBB99E900AAA5E7 /* ColorSheetViewController.m */; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -30,6 +33,12 @@
 /* Begin PBXFileReference section */
 		DD1D03BA1FBB0AB2006A47A6 /* ARConfiguration+Overrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARConfiguration+Overrides.h"; sourceTree = "<group>"; };
 		DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ARConfiguration+Overrides.m"; sourceTree = "<group>"; };
+		DD7135AD1FBB86E800AAA5E7 /* ASColorWell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASColorWell.h; sourceTree = "<group>"; };
+		DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASColorWell.m; sourceTree = "<group>"; };
+		DD7135D91FBB99E900AAA5E7 /* ColorSheetPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSheetPresentationController.h; sourceTree = "<group>"; };
+		DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSheetPresentationController.m; sourceTree = "<group>"; };
+		DD7135DB1FBB99E900AAA5E7 /* ColorSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSheetViewController.h; sourceTree = "<group>"; };
+		DD7135DC1FBB99E900AAA5E7 /* ColorSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSheetViewController.m; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -79,6 +88,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD7135D81FBB99E000AAA5E7 /* Color Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				DD7135D91FBB99E900AAA5E7 /* ColorSheetPresentationController.h */,
+				DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */,
+				DD7135DB1FBB99E900AAA5E7 /* ColorSheetViewController.h */,
+				DD7135DC1FBB99E900AAA5E7 /* ColorSheetViewController.m */,
+			);
+			path = "Color Sheet";
+			sourceTree = "<group>";
+		};
 		DDCE6C9C1FB87104000EAE11 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +221,7 @@
 		DDDBBC141FB79AF700291D45 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				DD7135D81FBB99E000AAA5E7 /* Color Sheet */,
 				DDDBBC0C1FB798C100291D45 /* UIViewController+Children.h */,
 				DDDBBC0D1FB798C100291D45 /* UIViewController+Children.m */,
 			);
@@ -214,6 +235,8 @@
 				DDDBBC171FB79C4D00291D45 /* PuppetCollectionViewCell.m */,
 				DDDBBC1C1FB7A73300291D45 /* ASPuppetView.h */,
 				DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */,
+				DD7135AD1FBB86E800AAA5E7 /* ASColorWell.h */,
+				DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,6 +321,7 @@
 			files = (
 				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
+				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
 				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
 				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
@@ -305,12 +329,14 @@
 				DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */,
 				DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */,
 				DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */,
+				DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */,
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
+				DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

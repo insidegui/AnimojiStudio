@@ -11,6 +11,9 @@
 #import "AVTPuppet.h"
 
 #import "ASPuppetView.h"
+#import "ASColorWell.h"
+
+#import "ColorSheetViewController.h"
 
 @interface RecordingViewController ()
 
@@ -19,11 +22,20 @@
 @property (nonatomic, strong) AVTPuppet *puppet;
 @property (nonatomic, strong) AVTAvatarInstance *avatarInstance;
 
+@property (nonatomic, strong) UIVisualEffectView *settingsContainer;
+@property (nonatomic, strong) UIStackView *settingsStack;
+
 @property (nonatomic, strong) UILabel *instructionLabel;
 
 @property (nonatomic, strong) UIStackView *microphoneSettingsStack;
 @property (nonatomic, strong) UILabel *microphoneLabel;
 @property (nonatomic, strong) UISwitch *microphoneSwitch;
+
+@property (nonatomic, strong) UIStackView *bgColorStack;
+@property (nonatomic, strong) UILabel *bgColorLabel;
+@property (nonatomic, strong) ASColorWell *bgColorWell;
+
+@property (nonatomic, strong) ColorSheetViewController *colorSheet;
 
 @end
 
@@ -70,27 +82,9 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recordTapped:)];
     [self.view addGestureRecognizer:tap];
     
-    [self _installInstructionLabel];
     [self _installSettingsUI];
     
     [self.microphoneSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:kMicrophoneEnabled]];
-}
-
-- (void)_installInstructionLabel
-{
-    self.instructionLabel = [UILabel new];
-    self.instructionLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording.";
-    self.instructionLabel.numberOfLines = 0;
-    self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
-    self.instructionLabel.textAlignment = NSTextAlignmentCenter;
-    self.instructionLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.instructionLabel.textColor = [UIColor grayColor];
-    [self.view addSubview:self.instructionLabel];
-    
-    [self.instructionLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:22].active = YES;
-    [self.instructionLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-22].active = YES;
-    [self.instructionLabel.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-32].active = YES;
 }
 
 - (void)setPuppetName:(NSString *)puppetName
@@ -118,28 +112,59 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 - (void)hideControls
 {
     [UIView animateWithDuration:0.3 animations:^{
-        self.instructionLabel.alpha = 0;
-        self.microphoneSettingsStack.alpha = 0;
+        self.settingsContainer.alpha = 0;
     } completion:^(BOOL finished) {
-        [self.instructionLabel setHidden:YES];
-        [self.microphoneSettingsStack setHidden:YES];
+        [self.settingsContainer setHidden:YES];
     }];
 }
 
 - (void)showControls
 {
-    [self.instructionLabel setHidden:NO];
-    [self.microphoneSettingsStack setHidden:NO];
+    [self.settingsContainer setHidden:NO];
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.instructionLabel.alpha = 1;
-        self.microphoneSettingsStack.alpha = 1;
+        self.settingsContainer.alpha = 1;
     }];
 }
 
 #pragma mark - Settings
 
+- (UIBlurEffect *)_settingsUIEffect
+{
+    return [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+}
+
 - (void)_installSettingsUI
+{
+    self.settingsContainer = [[UIVisualEffectView alloc] initWithEffect:nil];
+    self.settingsContainer.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.settingsStack = [UIStackView new];
+    self.settingsStack.alignment = UIStackViewAlignmentCenter;
+    self.settingsStack.axis = UILayoutConstraintAxisVertical;
+    self.settingsStack.spacing = 8;
+    self.settingsStack.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.settingsContainer.contentView addSubview:self.settingsStack];
+    [self.settingsStack.leadingAnchor constraintEqualToAnchor:self.settingsContainer.leadingAnchor].active = YES;
+    [self.settingsStack.trailingAnchor constraintEqualToAnchor:self.settingsContainer.trailingAnchor].active = YES;
+    [self.settingsStack.topAnchor constraintEqualToAnchor:self.settingsContainer.topAnchor constant: 16].active = YES;
+    [self.settingsStack.bottomAnchor constraintEqualToAnchor:self.settingsContainer.safeAreaLayoutGuide.bottomAnchor constant: -8].active = YES;
+    
+    [self _installMicrophoneSettingsUI];
+    [self _installColorSettingsUI];
+    [self _installInstructionLabel];
+    
+    [self.settingsStack setCustomSpacing:24 afterView:self.bgColorStack];
+    
+    [self.view addSubview:self.settingsContainer];
+    
+    [self.settingsContainer.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+    [self.settingsContainer.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
+    [self.settingsContainer.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+}
+
+- (void)_installMicrophoneSettingsUI
 {
     self.microphoneLabel = [UILabel new];
     self.microphoneLabel.text = @"Record Audio";
@@ -152,18 +177,106 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     self.microphoneSettingsStack.axis = UILayoutConstraintAxisHorizontal;
     self.microphoneSettingsStack.spacing = 8;
     
-    self.microphoneSettingsStack.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.settingsStack addArrangedSubview:self.microphoneSettingsStack];
+}
+
+- (void)_installColorSettingsUI
+{
+    self.bgColorLabel = [UILabel new];
+    self.bgColorLabel.text = @"Background Color";
+    self.bgColorLabel.textColor = [UIColor darkGrayColor];
     
-    [self.view addSubview:self.microphoneSettingsStack];
+    self.bgColorWell = [ASColorWell new];
+    [self.bgColorWell addTarget:self action:@selector(tappedColorWell:) forControlEvents:UIControlEventTouchDown];
     
-    [self.microphoneSettingsStack.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    [self.microphoneSettingsStack.bottomAnchor constraintEqualToAnchor:self.instructionLabel.topAnchor constant:-22].active = YES;
+    self.bgColorStack = [[UIStackView alloc] initWithArrangedSubviews:@[self.bgColorLabel, self.bgColorWell]];
+    self.bgColorStack.axis = UILayoutConstraintAxisHorizontal;
+    self.bgColorStack.spacing = 8;
+    
+    [self.settingsStack addArrangedSubview:self.bgColorStack];
 }
 
 - (IBAction)microphoneEnabledSwitchAction:(id)sender
 {
     self.microphoneEnabled = self.microphoneSwitch.isOn;
     [[NSUserDefaults standardUserDefaults] setBool:self.microphoneEnabled forKey:kMicrophoneEnabled];
+}
+
+- (void)_installInstructionLabel
+{
+    self.instructionLabel = [UILabel new];
+    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording.";
+    self.instructionLabel.numberOfLines = 0;
+    self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+    self.instructionLabel.textAlignment = NSTextAlignmentCenter;
+    self.instructionLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.instructionLabel.textColor = [UIColor grayColor];
+    
+    [self.settingsStack addArrangedSubview:self.instructionLabel];
+    
+    [self.instructionLabel.widthAnchor constraintLessThanOrEqualToAnchor:self.settingsStack.widthAnchor multiplier:0.9].active = YES;
+}
+
+#pragma mark - Color customization
+
+- (void)setSceneBackgroundColor:(UIColor *)color
+{
+    self.puppetView.scene.background.contents = color;
+    self.bgColorWell.color = color;
+    
+    [self _toggleSettingsBackgroundEffectWithColor:color];
+}
+
+- (void)_toggleSettingsBackgroundEffectWithColor:(UIColor *)color
+{
+    CGFloat r;
+    CGFloat g;
+    CGFloat b;
+    if ([color getRed:&r green:&g blue:&b alpha:nil]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            if (r < 0.8 || g < 0.8 || b < 0.8) {
+                [self.settingsContainer setEffect:[self _settingsUIEffect]];
+            } else {
+                [self.settingsContainer setEffect:nil];
+            }
+        }];
+    }
+}
+
+- (IBAction)tappedColorWell:(id)sender
+{
+    [self showColorSheet];
+}
+
+- (void)showColorSheet
+{
+    if (!self.colorSheet) {
+        self.colorSheet = [ColorSheetViewController new];
+        [self.colorSheet addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    
+    id sceneBg = self.puppetView.scene.background.contents;
+    if ([sceneBg isKindOfClass:[UIColor class]]) {
+        self.colorSheet.color = sceneBg;
+    } else {
+        self.colorSheet.color = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    }
+    
+    [self presentViewController:self.colorSheet animated:YES completion:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"color"]) {
+        [self setSceneBackgroundColor:self.colorSheet.color];
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)dealloc
+{
+    [self.colorSheet removeObserver:self forKeyPath:@"color"];
 }
 
 @end
