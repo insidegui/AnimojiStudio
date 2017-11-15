@@ -18,10 +18,12 @@
 
 @property (nonatomic, strong) AVAssetWriter *assetWriter;
 @property (nonatomic, strong) AVAssetWriterInput *videoInput;
-@property (nonatomic, strong) AVAssetWriterInput *audioInput;
+@property (nonatomic, strong) AVAssetWriterInput *micInput;
+@property (nonatomic, strong) AVAssetWriterInput *appInput;
 
 @property (nonatomic, assign) BOOL videoSessionStarted;
 @property (nonatomic, assign) BOOL micSessionStarted;
+@property (nonatomic, assign) BOOL appSessionStarted;
 
 @end
 
@@ -157,13 +159,16 @@
                                                      };
     
     self.videoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
-    self.audioInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:audioSettings];
+    self.micInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:audioSettings];
+    self.appInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:audioSettings];
     
     self.videoInput.expectsMediaDataInRealTime = YES;
-    self.audioInput.expectsMediaDataInRealTime = YES;
+    self.micInput.expectsMediaDataInRealTime = YES;
+    self.appInput.expectsMediaDataInRealTime = YES;
     
     [self.assetWriter addInput:self.videoInput];
-    [self.assetWriter addInput:self.audioInput];
+    [self.assetWriter addInput:self.micInput];
+    [self.assetWriter addInput:self.appInput];
     
     if (writerError) {
         [self.delegate recordingCoordinator:self recordingDidFailWithError:writerError];
@@ -198,8 +203,18 @@
                     [self.assetWriter startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp(sampleBuffer)];
                 }
                 
-                if (weakSelf.audioInput.isReadyForMoreMediaData) {
-                    [weakSelf.audioInput appendSampleBuffer:sampleBuffer];
+                if (weakSelf.micInput.isReadyForMoreMediaData) {
+                    [weakSelf.micInput appendSampleBuffer:sampleBuffer];
+                }
+                break;
+            case RPSampleBufferTypeAudioApp:
+                if (!weakSelf.appSessionStarted) {
+                    weakSelf.appSessionStarted = YES;
+                    [self.assetWriter startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp(sampleBuffer)];
+                }
+                
+                if (weakSelf.appInput.isReadyForMoreMediaData) {
+                    [weakSelf.appInput appendSampleBuffer:sampleBuffer];
                 }
                 break;
             default: break;
