@@ -138,7 +138,9 @@
     
     [self transitionToRecordingState];
     
-    [self.coordinator startRecordingWithAudio:self.recordingController.isMicrophoneEnabled frontCameraPreview:NO];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"ASDemoMode"]) {
+        [self.coordinator startRecordingWithAudio:self.recordingController.isMicrophoneEnabled frontCameraPreview:NO];
+    }
     
     [self _performLightTap];
 }
