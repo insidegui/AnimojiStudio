@@ -17,6 +17,7 @@
 		DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */; };
 		DD7135ED1FBBE62900AAA5E7 /* KaraokeFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135EC1FBBE62900AAA5E7 /* KaraokeFlowController.m */; };
 		DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */; };
+		DD7135F31FBC86D800AAA5E7 /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135F21FBC86D800AAA5E7 /* SongTableViewCell.m */; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -54,6 +55,8 @@
 		DD7135EC1FBBE62900AAA5E7 /* KaraokeFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KaraokeFlowController.m; sourceTree = "<group>"; };
 		DD7135EE1FBBE68300AAA5E7 /* SpotifySearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifySearchViewController.h; sourceTree = "<group>"; };
 		DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifySearchViewController.m; sourceTree = "<group>"; };
+		DD7135F11FBC86D800AAA5E7 /* SongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
+		DD7135F21FBC86D800AAA5E7 /* SongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */,
 				DD7135AD1FBB86E800AAA5E7 /* ASColorWell.h */,
 				DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */,
+				DD7135F11FBC86D800AAA5E7 /* SongTableViewCell.h */,
+				DD7135F21FBC86D800AAA5E7 /* SongTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
 				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
+				DD7135F31FBC86D800AAA5E7 /* SongTableViewCell.m in Sources */,
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
 				DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */,

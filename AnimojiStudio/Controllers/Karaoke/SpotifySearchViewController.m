@@ -10,6 +10,8 @@
 
 #import <SpotifyMetadata/SpotifyMetadata.h>
 
+#import "SongTableViewCell.h"
+
 NSString * const kTrackCellIdentifier = @"TrackCell";
 
 @interface SpotifySearchViewController () <UISearchBarDelegate>
@@ -26,7 +28,7 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     [self.view setOpaque:YES];
     
     self.title = @"Search Music";
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTrackCellIdentifier];
+    [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:kTrackCellIdentifier];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 0)];
     self.searchBar.backgroundImage = [UIImage imageNamed:@"searchBackground"];
@@ -39,9 +41,24 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     self.navigationItem.rightBarButtonItem = doneItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.searchBar becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.searchBar resignFirstResponder];
+    
+    [super viewWillDisappear:animated];
+}
+
 - (IBAction)doneTapped:(id)sender
 {
     [self.delegate spotifySearchViewControllerDidSelectDone:self];
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)setTracks:(NSArray<SPTPartialTrack *> *)tracks
@@ -58,11 +75,22 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTrackCellIdentifier];
+    SongTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTrackCellIdentifier];
     
     SPTPartialTrack *track = self.tracks[indexPath.row];
     
-    [cell.textLabel setText:track.name];
+    cell.title = track.name;
+    
+    __weak typeof(self) weakSelf = self;
+    cell.didTapPreviewButton = ^{
+        [weakSelf previewTrack:track];
+    };
+    
+    if ([track.identifier isEqualToString:self.previewTrackID]) {
+        [cell showPlayingState];
+    } else {
+        [cell showStoppedState];
+    }
     
     return cell;
 }
@@ -79,6 +107,22 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     if (searchBar.text.length < 3) return;
     
     [self.delegate spotifySearchViewController:self didSearchForTerm:searchBar.text];
+}
+
+- (void)previewTrack:(SPTPartialTrack *)track
+{
+    [self.delegate spotifySearchViewController:self didSelectPreviewTrack:track];
+    
+    self.previewTrackID = track.identifier;
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)stopPreviewing
+{
+    self.previewTrackID = nil;
+    
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

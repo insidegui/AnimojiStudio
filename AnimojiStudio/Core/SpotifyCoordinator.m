@@ -28,6 +28,8 @@
 @property (nonatomic, strong) AVPlayer *previewPlayer;
 @property (nonatomic, strong) id<NSObject> previewObserver;
 
+@property (nonatomic, strong) NSMutableArray *hostsWithCredentials;
+
 @end
 
 @implementation SpotifyCoordinator
@@ -35,6 +37,8 @@
 - (instancetype)init
 {
     self = [super init];
+    
+    self.hostsWithCredentials = [NSMutableArray new];
     
     self.player = [SPTAudioStreamingController sharedInstance];
     self.player.delegate = self;
@@ -120,9 +124,27 @@
     }];
 }
 
+- (void)_installCredentialHackForURL:(NSURL *)url
+{
+    if (!url.host) return;
+    if ([self.hostsWithCredentials containsObject:url.host]) return;
+    
+    [self.hostsWithCredentials addObject:url.host];
+    
+    NSInteger port = ([url.scheme.lowercaseString isEqualToString:@"http"]) ? 80 : 443;
+    
+    NSURLProtectionSpace *space = [[NSURLProtectionSpace alloc] initWithHost:url.host port:port protocol:url.scheme realm:nil authenticationMethod:nil];
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:@"" password:@"" persistence:NSURLCredentialPersistencePermanent];
+    
+    [[NSURLCredentialStorage sharedCredentialStorage] setDefaultCredential:credential forProtectionSpace:space];
+}
+
 - (void)playSongPreviewWithURL:(NSURL *)url
 {
-    self.previewPlayer = [AVPlayer playerWithURL:url];
+    [self _installCredentialHackForURL:url];
+    
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:@{AVURLAssetAllowsCellularAccessKey: @(YES)}];
+    self.previewPlayer = [[AVPlayer alloc] initWithPlayerItem:[AVPlayerItem playerItemWithAsset:asset]];
     
     __weak typeof(self) weakSelf = self;
     self.previewObserver = [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:self.previewPlayer.currentItem queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {

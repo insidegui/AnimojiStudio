@@ -14,6 +14,8 @@
 
 - (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSearchForTerm:(NSString *)term;
 - (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSelectTrack:(SPTPartialTrack *)track;
+- (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSelectPreviewTrack:(SPTPartialTrack *)track;
+
 - (void)spotifySearchViewControllerDidSelectDone:(SpotifySearchViewController *)controller;
 
 @end
@@ -23,5 +25,9 @@
 @property (nonatomic, weak) id<SpotifySearchViewControllerDelegate> delegate;
 
 @property (nonatomic, strong) NSArray <SPTPartialTrack *> *tracks;
+
+- (void)stopPreviewing;
+
+@property (nonatomic, copy) NSString *previewTrackID;
 
 @end
