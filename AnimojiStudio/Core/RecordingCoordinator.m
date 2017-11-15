@@ -166,7 +166,7 @@
                                                      AVFormatIDKey: @(kAudioFormatMPEG4AAC),
                                                      AVNumberOfChannelsKey: @(2),
                                                      AVSampleRateKey: @(44100.0),
-                                                     AVEncoderBitRateKey: @(320000)
+                                                     AVEncoderBitRateKey: @(128000)
                                                      };
     
     self.videoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
