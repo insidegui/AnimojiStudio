@@ -13,5 +13,6 @@
 @interface RecordingFlowController : UIViewController
 
 @property (nonatomic, weak) SpotifyCoordinator *spotifyCoordinator;
+@property (nonatomic, copy) NSString *karaokeTrackID;
 
 @end

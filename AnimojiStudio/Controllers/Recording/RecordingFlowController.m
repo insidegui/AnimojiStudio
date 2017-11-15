@@ -43,8 +43,6 @@
 
 @property (nonatomic, strong) KaraokeFlowController *karaokeFlow;
 
-@property (nonatomic, copy) NSString *karaokeTrackID;
-
 @end
 
 @interface RecordingFlowController (PuppetSelection) <PuppetSelectionDelegate>
@@ -83,6 +81,8 @@
 
 - (void)puppetSelectionViewController:(PuppetSelectionViewController *)controller didSelectPuppetWithName:(NSString *)puppetName
 {
+    self.karaokeTrackID = nil;
+    
     RecordingViewController *recording = [RecordingViewController new];
     recording.delegate = self;
     
@@ -147,7 +147,7 @@
 
 - (void)stopRecording
 {
-    [self.spotifyCoordinator stop];
+    if (self.karaokeTrackID) [self.spotifyCoordinator stop];
     
     [self.coordinator stopRecording];
     [self transitionToNormalState];
