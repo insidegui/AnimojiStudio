@@ -35,6 +35,7 @@
 		DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC1A1FB7A28D00291D45 /* RecordingViewController.m */; };
 		DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */; };
 		DDDBBC211FB7A7E400291D45 /* AvatarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDBBC201FB7A7E400291D45 /* AvatarKit.framework */; };
+		DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF87E3B1FBCE63A00F1A24C /* RecordingSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,8 @@
 		DDDBBC1C1FB7A73300291D45 /* ASPuppetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASPuppetView.h; sourceTree = "<group>"; };
 		DDDBBC1D1FB7A73300291D45 /* ASPuppetView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASPuppetView.m; sourceTree = "<group>"; };
 		DDDBBC201FB7A7E400291D45 /* AvatarKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AvatarKit.framework; path = AnimojiStudio/AvatarKit/AvatarKit.framework; sourceTree = "<group>"; };
+		DDF87E3A1FBCE63A00F1A24C /* RecordingSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingSettingsViewController.h; sourceTree = "<group>"; };
+		DDF87E3B1FBCE63A00F1A24C /* RecordingSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +243,8 @@
 				DDDBBC1A1FB7A28D00291D45 /* RecordingViewController.m */,
 				DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */,
 				DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */,
+				DDF87E3A1FBCE63A00F1A24C /* RecordingSettingsViewController.h */,
+				DDF87E3B1FBCE63A00F1A24C /* RecordingSettingsViewController.m */,
 			);
 			path = Recording;
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
+				DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,

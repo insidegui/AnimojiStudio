@@ -31,6 +31,7 @@
 @property (nonatomic, weak) RecordingViewController *recordingController;
 
 @property (nonatomic, strong) UIWindow *statusWindow;
+
 @property (nonatomic, strong) RecordingStatusViewController *statusController;
 
 @property (nonatomic, strong) RecordingCoordinator *coordinator;
