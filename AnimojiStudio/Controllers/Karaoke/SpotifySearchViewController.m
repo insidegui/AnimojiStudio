@@ -114,6 +114,16 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
 
 - (void)previewTrack:(SPTPartialTrack *)track
 {
+    [self.searchBar resignFirstResponder];
+    
+    if (self.previewTrackID) {
+        if ([track.identifier isEqualToString:self.previewTrackID]) {
+            [self.delegate spotifySearchViewControllerDidSelectStop:self];
+            [self stopPreviewing];
+            return;
+        }
+    }
+    
     [self stopPreviewing];
     
     [self.delegate spotifySearchViewController:self didSelectPreviewTrack:track];
@@ -126,6 +136,7 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier = %@", self.previewTrackID];
     SPTPartialTrack *playingTrack = [self.tracks filteredArrayUsingPredicate:predicate].firstObject;
     if (playingTrack) {
+        self.previewTrackID = nil;
         NSUInteger index = [self.tracks indexOfObject:playingTrack];
         NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];

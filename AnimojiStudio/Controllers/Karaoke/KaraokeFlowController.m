@@ -64,23 +64,18 @@
 }
 
 - (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSelectPreviewTrack:(SPTPartialTrack *)track
-{
-    if (self.searchController.previewTrackID) {
-        if ([track.identifier isEqualToString:self.searchController.previewTrackID]) {
-            [self.spotifyCoordinator stopPreviewPlayback];
-            [self.searchController stopPreviewing];
-            self.searchController.previewTrackID = nil;
-            return;
-        }
-    }
-    
+{    
     [self.spotifyCoordinator playSongPreviewWithURL:track.previewURL];
     
     __weak typeof(self) weakSelf = self;
     self.spotifyCoordinator.previewPlaybackDidFinish = ^{
         [weakSelf.searchController stopPreviewing];
-        self.searchController.previewTrackID = nil;
     };
+}
+
+- (void)spotifySearchViewControllerDidSelectStop:(SpotifySearchViewController *)controller
+{
+    [self.spotifyCoordinator stopPreviewPlayback];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -88,7 +83,7 @@
     [super viewWillDisappear:animated];
     
     [self.spotifyCoordinator stopPreviewPlayback];
-    self.searchController.previewTrackID = nil;
+    [self.searchController stopPreviewing];
 }
 
 @end

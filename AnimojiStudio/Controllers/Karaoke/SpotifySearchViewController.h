@@ -15,6 +15,7 @@
 - (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSearchForTerm:(NSString *)term;
 - (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSelectTrack:(SPTPartialTrack *)track;
 - (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSelectPreviewTrack:(SPTPartialTrack *)track;
+- (void)spotifySearchViewControllerDidSelectStop:(SpotifySearchViewController *)controller;
 
 - (void)spotifySearchViewControllerDidSelectDone:(SpotifySearchViewController *)controller;
 
