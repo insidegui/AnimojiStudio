@@ -218,7 +218,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 - (void)_installInstructionLabel
 {
     self.instructionLabel = [UILabel new];
-    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording. Double tap to live stream.";
+    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording.\nDouble tap to live stream.";
     self.instructionLabel.numberOfLines = 0;
     self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
     self.instructionLabel.textAlignment = NSTextAlignmentCenter;
