@@ -330,6 +330,8 @@
 - (void)karaokeFlowController:(KaraokeFlowController *)controller didFinishWithTrackID:(NSString *)trackID
 {
     self.karaokeTrackID = trackID;
+    
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller

@@ -10,6 +10,7 @@
 
 #import <SpotifyAuthentication/SpotifyAuthentication.h>
 #import <SpotifyAudioPlayback/SpotifyAudioPlayback.h>
+#import <SpotifyMetadata/SpotifyMetadata.h>
 
 @import SafariServices;
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) SPTCoreAudioController *coreAudioController;
 
 @property (nonatomic, strong) SFSafariViewController *safariController;
+
+@property (nonatomic, assign) BOOL playerStarted;
 
 @end
 
@@ -45,8 +48,11 @@
 
 - (void)startAuthFlowFromViewController:(UIViewController *)presenter withError:(NSError **)outError
 {
-    if (![self.player startWithClientId:self.auth.clientID audioController:self.coreAudioController allowCaching:YES error:outError]) {
-        return;
+    if (!self.playerStarted) {
+        if (![self.player startWithClientId:self.auth.clientID audioController:self.coreAudioController allowCaching:YES error:outError]) {
+            return;
+        }
+        self.playerStarted = YES;
     }
     
     // not needed, already have a session
@@ -100,6 +106,13 @@
 {
     [self.player setIsPlaying:NO callback:^(NSError *error) {
         NSLog(@"setIsPlaying error: %@", error);
+    }];
+}
+
+- (void)searchForTerm:(NSString *)term completion:(void(^)(NSError *error, id result))completionHandler
+{
+    [SPTSearch performSearchWithQuery:term queryType:SPTQueryTypeTrack accessToken:self.auth.session.accessToken callback:^(NSError *error, id object) {
+        completionHandler(error, object);
     }];
 }
 

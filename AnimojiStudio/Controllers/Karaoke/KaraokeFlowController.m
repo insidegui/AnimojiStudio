@@ -13,7 +13,9 @@
 #import "SpotifyCoordinator.h"
 #import "SpotifySearchViewController.h"
 
-@interface KaraokeFlowController ()
+#import <SpotifyMetadata/SpotifyMetadata.h>
+
+@interface KaraokeFlowController () <SpotifySearchViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) SpotifySearchViewController *searchController;
@@ -30,8 +32,35 @@
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:search];
     
     self.searchController = search;
+    self.searchController.delegate = self;
     
     [self installChildViewController:self.navigationController];
+}
+
+- (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSearchForTerm:(NSString *)term
+{
+    __weak typeof(self) weakSelf = self;
+    [self.spotifyCoordinator searchForTerm:term completion:^(NSError *error, SPTListPage *result) {
+        if (error) {
+            NSLog(@"Spotify search error: %@", error);
+        } else {
+            NSLog(@"SEARCH DONE");
+            NSLog(@"%@", result.items);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.searchController setTracks:result.items];
+            });
+        }
+    }];
+}
+
+- (void)spotifySearchViewController:(SpotifySearchViewController *)controller didSelectTrack:(SPTPartialTrack *)track
+{
+    [self.delegate karaokeFlowController:self didFinishWithTrackID:track.playableUri.absoluteString];
+}
+
+- (void)spotifySearchViewControllerDidSelectDone:(SpotifySearchViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

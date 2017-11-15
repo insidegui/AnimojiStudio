@@ -26,4 +26,6 @@
 - (void)playTrackID:(NSString *)trackID;
 - (void)stop;
 
+- (void)searchForTerm:(NSString *)term completion:(void(^)(NSError *error, id result))completionHandler;
+
 @end
