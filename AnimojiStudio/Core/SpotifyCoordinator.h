@@ -28,4 +28,9 @@
 
 - (void)searchForTerm:(NSString *)term completion:(void(^)(NSError *error, id result))completionHandler;
 
+- (void)playSongPreviewWithURL:(NSURL *)url;
+- (void)stopPreviewPlayback;
+
+@property (nonatomic, copy) void (^previewPlaybackDidFinish)(void);
+
 @end

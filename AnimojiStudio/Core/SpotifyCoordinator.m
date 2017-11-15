@@ -13,6 +13,7 @@
 #import <SpotifyMetadata/SpotifyMetadata.h>
 
 @import SafariServices;
+@import AVFoundation;
 
 @interface SpotifyCoordinator () <SPTAudioStreamingDelegate>
 
@@ -23,6 +24,9 @@
 @property (nonatomic, strong) SFSafariViewController *safariController;
 
 @property (nonatomic, assign) BOOL playerStarted;
+
+@property (nonatomic, strong) AVPlayer *previewPlayer;
+@property (nonatomic, strong) id<NSObject> previewObserver;
 
 @end
 
@@ -114,6 +118,27 @@
     [SPTSearch performSearchWithQuery:term queryType:SPTQueryTypeTrack accessToken:self.auth.session.accessToken callback:^(NSError *error, id object) {
         completionHandler(error, object);
     }];
+}
+
+- (void)playSongPreviewWithURL:(NSURL *)url
+{
+    self.previewPlayer = [AVPlayer playerWithURL:url];
+    
+    __weak typeof(self) weakSelf = self;
+    self.previewObserver = [[NSNotificationCenter defaultCenter] addObserverForName:AVPlayerItemDidPlayToEndTimeNotification object:self.previewPlayer.currentItem queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        if (weakSelf.previewPlaybackDidFinish) weakSelf.previewPlaybackDidFinish();
+    }];
+    
+    [self.previewPlayer play];
+}
+
+- (void)stopPreviewPlayback
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self.previewObserver];
+    
+    [self.previewPlayer pause];
+    [self.previewPlayer cancelPendingPrerolls];
+    self.previewPlayer = nil;
 }
 
 @end
