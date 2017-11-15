@@ -15,6 +15,14 @@ You can also choose to record with or without audio.
 - Live stream your Animoji to services like Mobcrush and Periscope
 - Record Animoji videos without pausing audio playback from other apps (when microphone is disabled)
 
+### Karaoke mode
+
+Lip sync to your favorite songs using Karaoke mode. Tap "Configure Karaoke", search for the song you want and select it.
+
+When you press record, the song will automatically start playing and will be recorded with your Animoji video.
+
+*Karaoke mode requires a premium Spotify subscription and the Spotify app to be installed on your iPhone.*
+
 ![screens](./screenshots/AnimojiStudio_Screens.png)
 
 You can also try to install the app on your iPhone X using Cydia Impactor and the [prebuilt IPA](https://github.com/insidegui/AnimojiStudio/releases/latest).
