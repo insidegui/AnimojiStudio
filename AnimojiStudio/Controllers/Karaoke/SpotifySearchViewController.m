@@ -29,6 +29,7 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTrackCellIdentifier];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 0)];
+    self.searchBar.backgroundImage = [UIImage imageNamed:@"searchBackground"];
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Search for songs";
     [self.searchBar sizeToFit];
