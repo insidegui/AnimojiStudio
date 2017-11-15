@@ -180,7 +180,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 - (void)_installMicrophoneSettingsUI
 {
     self.microphoneLabel = [UILabel new];
-    self.microphoneLabel.text = @"Record Audio";
+    self.microphoneLabel.text = @"Enable Microphone";
     self.microphoneLabel.textColor = [UIColor darkGrayColor];
     
     self.microphoneSwitch = [UISwitch new];
