@@ -38,7 +38,7 @@
     self.auth.clientID = @"7cc18ebcb302432b86abe6d2f3f65578";
     self.auth.redirectURL = [NSURL URLWithString:@"animojistudio://spotify"];
     self.auth.sessionUserDefaultsKey = @"SpotifySession";
-    self.auth.requestedScopes = @[SPTAuthStreamingScope];
+    self.auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
     
     return self;
 }

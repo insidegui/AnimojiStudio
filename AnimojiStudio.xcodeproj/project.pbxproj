@@ -15,6 +15,8 @@
 		DD7135E51FBBDA9400AAA5E7 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7135E11FBBDA8400AAA5E7 /* SpotifyAuthentication.framework */; };
 		DD7135E61FBBDA9800AAA5E7 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7135E31FBBDA8500AAA5E7 /* SpotifyMetadata.framework */; };
 		DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */; };
+		DD7135ED1FBBE62900AAA5E7 /* KaraokeFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135EC1FBBE62900AAA5E7 /* KaraokeFlowController.m */; };
+		DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -48,6 +50,10 @@
 		DD7135E31FBBDA8500AAA5E7 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
 		DD7135E71FBBDACD00AAA5E7 /* SpotifyCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifyCoordinator.h; sourceTree = "<group>"; };
 		DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyCoordinator.m; sourceTree = "<group>"; };
+		DD7135EB1FBBE62900AAA5E7 /* KaraokeFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaraokeFlowController.h; sourceTree = "<group>"; };
+		DD7135EC1FBBE62900AAA5E7 /* KaraokeFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KaraokeFlowController.m; sourceTree = "<group>"; };
+		DD7135EE1FBBE68300AAA5E7 /* SpotifySearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifySearchViewController.h; sourceTree = "<group>"; };
+		DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifySearchViewController.m; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -109,6 +115,17 @@
 				DD7135DC1FBB99E900AAA5E7 /* ColorSheetViewController.m */,
 			);
 			path = "Color Sheet";
+			sourceTree = "<group>";
+		};
+		DD7135EA1FBBE60100AAA5E7 /* Karaoke */ = {
+			isa = PBXGroup;
+			children = (
+				DD7135EB1FBBE62900AAA5E7 /* KaraokeFlowController.h */,
+				DD7135EC1FBBE62900AAA5E7 /* KaraokeFlowController.m */,
+				DD7135EE1FBBE68300AAA5E7 /* SpotifySearchViewController.h */,
+				DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */,
+			);
+			path = Karaoke;
 			sourceTree = "<group>";
 		};
 		DDCE6C9C1FB87104000EAE11 /* Core */ = {
@@ -193,6 +210,7 @@
 				DDDBBC141FB79AF700291D45 /* Misc */,
 				DDDBBC131FB79AF400291D45 /* Error */,
 				DDDBBC121FB79AE700291D45 /* Recording */,
+				DD7135EA1FBBE60100AAA5E7 /* Karaoke */,
 				DDCE6CA71FB8D9CC000EAE11 /* Sharing */,
 			);
 			path = Controllers;
@@ -344,7 +362,9 @@
 				DDDBBC181FB79C4D00291D45 /* PuppetCollectionViewCell.m in Sources */,
 				DDDBBBF91FB7918000291D45 /* main.m in Sources */,
 				DDDBBC1E1FB7A73300291D45 /* ASPuppetView.m in Sources */,
+				DD7135ED1FBBE62900AAA5E7 /* KaraokeFlowController.m in Sources */,
 				DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */,
+				DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */,
 				DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */,
 				DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */,
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,

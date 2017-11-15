@@ -20,6 +20,7 @@
 #import "SharingFlowController.h"
 
 #import "SpotifyCoordinator.h"
+#import "KaraokeFlowController.h"
 
 @import ReplayKit;
 
@@ -40,6 +41,10 @@
 
 @property (nonatomic, strong) SharingFlowController *sharingFlow;
 
+@property (nonatomic, strong) KaraokeFlowController *karaokeFlow;
+
+@property (nonatomic, copy) NSString *karaokeTrackID;
+
 @end
 
 @interface RecordingFlowController (PuppetSelection) <PuppetSelectionDelegate>
@@ -52,6 +57,9 @@
 @end
 
 @interface RecordingFlowController (RecordingStatus) <RecordingStatusViewControllerDelegate>
+@end
+
+@interface RecordingFlowController (Karaoke) <KaraokeFlowControllerDelegate>
 @end
 
 @implementation RecordingFlowController
@@ -123,7 +131,7 @@
 
 - (void)startRecording
 {
-    [self.spotifyCoordinator playTrackID:@"spotify:track:58s6EuEYJdlb0kO7awm3Vp"];
+    if (self.karaokeTrackID) [self.spotifyCoordinator playTrackID:self.karaokeTrackID];
     
     self.coordinator = [RecordingCoordinator new];
     self.coordinator.delegate = self;
@@ -308,6 +316,22 @@
 
 #pragma mark Karaoke
 
+- (void)startKaraokeFlow
+{
+    if (!self.karaokeFlow) {
+        self.karaokeFlow = [KaraokeFlowController new];
+        self.karaokeFlow.spotifyCoordinator = self.spotifyCoordinator;
+        self.karaokeFlow.delegate = self;
+    }
+    
+    [self presentViewController:self.karaokeFlow animated:YES completion:nil];
+}
+
+- (void)karaokeFlowController:(KaraokeFlowController *)controller didFinishWithTrackID:(NSString *)trackID
+{
+    self.karaokeTrackID = trackID;
+}
+
 - (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller
 {
     NSError *spotifyError;
@@ -315,6 +339,8 @@
     
     if (spotifyError) {
         [self presentErrorControllerWithMessage:spotifyError.localizedDescription];
+    } else {
+        [self startKaraokeFlow];
     }
 }
 
