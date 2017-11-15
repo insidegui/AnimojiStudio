@@ -11,6 +11,8 @@
 @interface SongTableViewCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+
 @property (nonatomic, copy) void (^didTapPreviewButton)(void);
 
 - (void)showStoppedState;

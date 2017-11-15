@@ -36,6 +36,8 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     self.searchBar.placeholder = @"Search for songs";
     [self.searchBar sizeToFit];
     [self.tableView setTableHeaderView:self.searchBar];
+    self.tableView.estimatedRowHeight = 60;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTapped:)];
     self.navigationItem.rightBarButtonItem = doneItem;
@@ -58,7 +60,6 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
 - (IBAction)doneTapped:(id)sender
 {
     [self.delegate spotifySearchViewControllerDidSelectDone:self];
-    [self.searchBar resignFirstResponder];
 }
 
 - (void)setTracks:(NSArray<SPTPartialTrack *> *)tracks
@@ -66,6 +67,7 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     _tracks = tracks;
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.searchBar resignFirstResponder];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -80,6 +82,7 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
     SPTPartialTrack *track = self.tracks[indexPath.row];
     
     cell.title = track.name;
+    cell.subtitle = [track.artists.firstObject name];
     
     __weak typeof(self) weakSelf = self;
     cell.didTapPreviewButton = ^{
@@ -111,18 +114,22 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
 
 - (void)previewTrack:(SPTPartialTrack *)track
 {
+    [self stopPreviewing];
+    
     [self.delegate spotifySearchViewController:self didSelectPreviewTrack:track];
     
     self.previewTrackID = track.identifier;
-    
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)stopPreviewing
 {
-    self.previewTrackID = nil;
-    
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier = %@", self.previewTrackID];
+    SPTPartialTrack *playingTrack = [self.tracks filteredArrayUsingPredicate:predicate].firstObject;
+    if (playingTrack) {
+        NSUInteger index = [self.tracks indexOfObject:playingTrack];
+        NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 @end

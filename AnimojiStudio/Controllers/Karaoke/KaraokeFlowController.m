@@ -69,6 +69,7 @@
         if ([track.identifier isEqualToString:self.searchController.previewTrackID]) {
             [self.spotifyCoordinator stopPreviewPlayback];
             [self.searchController stopPreviewing];
+            self.searchController.previewTrackID = nil;
             return;
         }
     }
@@ -78,6 +79,7 @@
     __weak typeof(self) weakSelf = self;
     self.spotifyCoordinator.previewPlaybackDidFinish = ^{
         [weakSelf.searchController stopPreviewing];
+        self.searchController.previewTrackID = nil;
     };
 }
 
@@ -86,6 +88,7 @@
     [super viewWillDisappear:animated];
     
     [self.spotifyCoordinator stopPreviewPlayback];
+    self.searchController.previewTrackID = nil;
 }
 
 @end
