@@ -9,6 +9,12 @@ You can also choose to record with or without audio.
 
 ***NOTE: This app uses a private framework, therefore it will not be published on the App Store and can only be installed by compiling and running from Xcode or sideloading the IPA. Please do not file issues about installation problems, that's out of the scope of this project.***
 
+### Top features:
+- Record Animoji videos with unlimited duration
+- Customize the background color
+- Live stream your Animoji to services like Mobcrush and Periscope
+- Record Animoji videos without pausing audio playback from other apps (when microphone is disabled)
+
 ![screens](./screenshots/AnimojiStudio_Screens.png)
 
 You can also try to install the app on your iPhone X using Cydia Impactor and the [prebuilt IPA](https://github.com/insidegui/AnimojiStudio/releases/latest).
