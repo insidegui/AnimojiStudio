@@ -124,4 +124,12 @@
     [self.delegate videoPreviewViewControllerDidSelectShare:self];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.player pause];
+    [self.player cancelPendingPrerolls];
+}
+
 @end
