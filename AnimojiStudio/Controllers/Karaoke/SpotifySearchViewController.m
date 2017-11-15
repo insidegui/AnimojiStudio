@@ -25,22 +25,42 @@ NSString * const kTrackCellIdentifier = @"TrackCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self build];
+}
+
+- (void)build
+{
+    self.title = @"Search Music";
+    
     [self.view setOpaque:YES];
     
-    self.title = @"Search Music";
-    [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:kTrackCellIdentifier];
-    
+    [self _as_configureSearchBar];
+    [self _as_configureTableView];
+    [self _as_configureNavigation];
+}
+
+- (void)_as_configureNavigation
+{
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(doneTapped:)];
+    self.navigationItem.leftBarButtonItem = cancelItem;
+}
+
+- (void)_as_configureSearchBar
+{
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 0)];
     self.searchBar.backgroundImage = [UIImage imageNamed:@"searchBackground"];
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Search for songs";
     [self.searchBar sizeToFit];
     [self.tableView setTableHeaderView:self.searchBar];
+}
+
+- (void)_as_configureTableView
+{
+    [self.tableView registerClass:[SongTableViewCell class] forCellReuseIdentifier:kTrackCellIdentifier];
+    
     self.tableView.estimatedRowHeight = 60;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTapped:)];
-    self.navigationItem.rightBarButtonItem = doneItem;
 }
 
 - (void)viewDidAppear:(BOOL)animated
