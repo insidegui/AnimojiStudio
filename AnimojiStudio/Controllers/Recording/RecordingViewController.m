@@ -35,6 +35,8 @@
 @property (nonatomic, strong) UILabel *bgColorLabel;
 @property (nonatomic, strong) ASColorWell *bgColorWell;
 
+@property (nonatomic, strong) UIButton *karaokeButton;
+
 @property (nonatomic, strong) ColorSheetViewController *colorSheet;
 
 @end
@@ -166,6 +168,8 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     
     [self _installMicrophoneSettingsUI];
     [self _installColorSettingsUI];
+    [self _installKaraokeUI];
+    
     [self _installInstructionLabel];
     
     [self.settingsStack setCustomSpacing:24 afterView:self.bgColorStack];
@@ -228,6 +232,22 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     [self.settingsStack addArrangedSubview:self.instructionLabel];
     
     [self.instructionLabel.widthAnchor constraintLessThanOrEqualToAnchor:self.settingsStack.widthAnchor multiplier:0.9].active = YES;
+}
+
+- (void)_installKaraokeUI
+{
+    self.karaokeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.karaokeButton setTitle:@"Configure Karaoke" forState:UIControlStateNormal];
+    [self.karaokeButton addTarget:self action:@selector(karaokeTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.settingsStack addArrangedSubview:self.karaokeButton];
+}
+
+#pragma mark - Karaoke
+
+- (IBAction)karaokeTapped:(id)sender
+{
+    [self.delegate recordingViewControllerDidTapKaraoke:self];
 }
 
 #pragma mark - Color customization

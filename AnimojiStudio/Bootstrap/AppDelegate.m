@@ -13,9 +13,12 @@
 #import "ErrorViewController.h"
 #import "RecordingFlowController.h"
 
+#import "SpotifyCoordinator.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) RecordingFlowController *recordingFlow;
+@property (nonatomic, strong) SpotifyCoordinator *spotifyCoordinator;
 
 @end
 
@@ -23,6 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [ASAppearance install];
+    
+    self.spotifyCoordinator = [SpotifyCoordinator new];
     
     self.window = [UIWindow new];
     
@@ -37,6 +42,8 @@
     
     self.recordingFlow = [RecordingFlowController new];
     
+    self.recordingFlow.spotifyCoordinator = self.spotifyCoordinator;
+    
     [self.window setRootViewController:self.recordingFlow];
     [self.window makeKeyAndVisible];
     
@@ -48,6 +55,11 @@
     ErrorViewController *controller = [ErrorViewController new];
     controller.message = errorMessage;
     [self.window setRootViewController:controller];
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [self.spotifyCoordinator handleCallbackURL:url];
 }
 
 @end

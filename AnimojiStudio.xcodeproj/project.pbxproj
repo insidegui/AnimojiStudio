@@ -11,6 +11,10 @@
 		DD7135AF1FBB86E800AAA5E7 /* ASColorWell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135AE1FBB86E800AAA5E7 /* ASColorWell.m */; };
 		DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */; };
 		DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135DC1FBB99E900AAA5E7 /* ColorSheetViewController.m */; };
+		DD7135E41FBBDA9100AAA5E7 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7135E21FBBDA8400AAA5E7 /* SpotifyAudioPlayback.framework */; };
+		DD7135E51FBBDA9400AAA5E7 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7135E11FBBDA8400AAA5E7 /* SpotifyAuthentication.framework */; };
+		DD7135E61FBBDA9800AAA5E7 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7135E31FBBDA8500AAA5E7 /* SpotifyMetadata.framework */; };
+		DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -39,6 +43,11 @@
 		DD7135DA1FBB99E900AAA5E7 /* ColorSheetPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSheetPresentationController.m; sourceTree = "<group>"; };
 		DD7135DB1FBB99E900AAA5E7 /* ColorSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSheetViewController.h; sourceTree = "<group>"; };
 		DD7135DC1FBB99E900AAA5E7 /* ColorSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSheetViewController.m; sourceTree = "<group>"; };
+		DD7135E11FBBDA8400AAA5E7 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		DD7135E21FBBDA8400AAA5E7 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		DD7135E31FBBDA8500AAA5E7 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		DD7135E71FBBDACD00AAA5E7 /* SpotifyCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifyCoordinator.h; sourceTree = "<group>"; };
+		DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifyCoordinator.m; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -82,6 +91,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDBBC211FB7A7E400291D45 /* AvatarKit.framework in Frameworks */,
+				DD7135E41FBBDA9100AAA5E7 /* SpotifyAudioPlayback.framework in Frameworks */,
+				DD7135E51FBBDA9400AAA5E7 /* SpotifyAuthentication.framework in Frameworks */,
+				DD7135E61FBBDA9800AAA5E7 /* SpotifyMetadata.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +118,8 @@
 				DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */,
 				DD1D03BA1FBB0AB2006A47A6 /* ARConfiguration+Overrides.h */,
 				DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */,
+				DD7135E71FBBDACD00AAA5E7 /* SpotifyCoordinator.h */,
+				DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -244,6 +258,9 @@
 		DDDBBC1F1FB7A7E400291D45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD7135E21FBBDA8400AAA5E7 /* SpotifyAudioPlayback.framework */,
+				DD7135E11FBBDA8400AAA5E7 /* SpotifyAuthentication.framework */,
+				DD7135E31FBBDA8500AAA5E7 /* SpotifyMetadata.framework */,
 				DDDBBC201FB7A7E400291D45 /* AvatarKit.framework */,
 			);
 			name = Frameworks;
@@ -333,6 +350,7 @@
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,
+				DD7135E91FBBDACD00AAA5E7 /* SpotifyCoordinator.m in Sources */,
 				DDDBBC111FB79A8F00291D45 /* ASAppearance.m in Sources */,
 				DD1D03BC1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m in Sources */,
 				DDDBBC1B1FB7A28D00291D45 /* RecordingViewController.m in Sources */,
@@ -467,10 +485,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AnimojiStudio/AvatarKit",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = fun.Animoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "52cea236-12c3-4754-b0d0-4c3300a2e2cf";
@@ -490,10 +509,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AnimojiStudio/AvatarKit",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = fun.Animoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "749f009f-a7ac-4b9a-83fb-15fd3c6b210e";

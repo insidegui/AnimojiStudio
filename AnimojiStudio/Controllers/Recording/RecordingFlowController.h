@@ -6,8 +6,12 @@
 //  Copyright © 2017 Guilherme Rambo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
+@class SpotifyCoordinator;
 
 @interface RecordingFlowController : UIViewController
+
+@property (nonatomic, weak) SpotifyCoordinator *spotifyCoordinator;
 
 @end

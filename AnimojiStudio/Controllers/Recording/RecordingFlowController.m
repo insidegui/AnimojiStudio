@@ -19,6 +19,8 @@
 
 #import "SharingFlowController.h"
 
+#import "SpotifyCoordinator.h"
+
 @import ReplayKit;
 
 @interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
@@ -121,6 +123,8 @@
 
 - (void)startRecording
 {
+    [self.spotifyCoordinator playTrackID:@"spotify:track:58s6EuEYJdlb0kO7awm3Vp"];
+    
     self.coordinator = [RecordingCoordinator new];
     self.coordinator.delegate = self;
     
@@ -133,6 +137,8 @@
 
 - (void)stopRecording
 {
+    [self.spotifyCoordinator stop];
+    
     [self.coordinator stopRecording];
     [self transitionToNormalState];
     
@@ -297,6 +303,18 @@
         [self stopBroadcasting];
     } else {
         [self stopRecording];
+    }
+}
+
+#pragma mark Karaoke
+
+- (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller
+{
+    NSError *spotifyError;
+    [self.spotifyCoordinator startAuthFlowFromViewController:self withError:&spotifyError];
+    
+    if (spotifyError) {
+        [self presentErrorControllerWithMessage:spotifyError.localizedDescription];
     }
 }
 
