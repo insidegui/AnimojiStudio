@@ -23,6 +23,6 @@ When you press record, the song will automatically start playing and will be rec
 
 *Karaoke mode requires a premium Spotify subscription and the Spotify app to be installed on your iPhone.* **I don't recommend using AirPods for karaoke mode because it introduces a delay that makes the audio and video get out of sync.**
 
-![screens](./screenshots/AnimojiStudio_Screens.png)
+![screens](./screenshots/AnimojiStudio_Screens2.png)
 
 You can also try to install the app on your iPhone X using Cydia Impactor and the [prebuilt IPA](https://github.com/insidegui/AnimojiStudio/releases/latest).
