@@ -82,9 +82,16 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recordTapped:)];
     [self.view addGestureRecognizer:tap];
     
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(broadcastTapped:)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.view addGestureRecognizer:doubleTap];
+    
+    [tap requireGestureRecognizerToFail:doubleTap];
+    
     [self _installSettingsUI];
     
     [self.microphoneSwitch setOn:[[NSUserDefaults standardUserDefaults] boolForKey:kMicrophoneEnabled]];
+    [self microphoneEnabledSwitchAction:self.microphoneSwitch];
 }
 
 - (void)setPuppetName:(NSString *)puppetName
@@ -107,6 +114,12 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 {
     [self.puppetView resetTracking];
     [self.delegate recordingViewControllerDidTapRecord:self];
+}
+
+- (IBAction)broadcastTapped:(id)sender
+{
+    [self.puppetView resetTracking];
+    [self.delegate recordingViewControllerDidTapBroadcast:self];
 }
 
 - (void)hideControls
@@ -205,7 +218,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 - (void)_installInstructionLabel
 {
     self.instructionLabel = [UILabel new];
-    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording.";
+    self.instructionLabel.text = @"Tap on the screen to start recording, tap again to stop recording. Double tap to live stream.";
     self.instructionLabel.numberOfLines = 0;
     self.instructionLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
     self.instructionLabel.textAlignment = NSTextAlignmentCenter;

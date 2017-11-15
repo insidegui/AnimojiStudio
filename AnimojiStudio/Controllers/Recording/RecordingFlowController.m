@@ -19,7 +19,9 @@
 
 #import "SharingFlowController.h"
 
-@interface RecordingFlowController ()
+@import ReplayKit;
+
+@interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, weak) PuppetSelectionViewController *puppetSelectionController;
@@ -29,6 +31,7 @@
 @property (nonatomic, strong) RecordingStatusViewController *statusController;
 
 @property (nonatomic, strong) RecordingCoordinator *coordinator;
+@property (nonatomic, strong) RPBroadcastController *broadcastController;
 
 @property (nonatomic, strong) UIImpactFeedbackGenerator *interactionHaptics;
 @property (nonatomic, strong) UINotificationFeedbackGenerator *notificationHaptics;
@@ -136,6 +139,99 @@
     [self _performEventTapWithError:NO];
 }
 
+#pragma mark - Broadcasting
+
+- (void)recordingViewControllerDidTapBroadcast:(RecordingViewController *)controller
+{
+    if (self.broadcastController.isBroadcasting) return;
+    
+    [self startBroadcasting];
+}
+
+- (void)startBroadcasting
+{
+    if (!self.broadcastController) {
+        self.broadcastController = [RPBroadcastController new];
+        self.broadcastController.delegate = self;
+    }
+    
+#ifdef DEBUG
+    NSLog(@"MIC ENABLED = %d", self.recordingController.isMicrophoneEnabled);
+#endif
+
+    [RPScreenRecorder sharedRecorder].microphoneEnabled = self.recordingController.isMicrophoneEnabled;
+    
+    [RPBroadcastActivityViewController loadBroadcastActivityViewControllerWithHandler:^(RPBroadcastActivityViewController * _Nullable broadcastActivityViewController, NSError * _Nullable error) {
+        if (error) {
+            [self presentErrorControllerWithMessage:error.localizedDescription];
+            return;
+        }
+        
+        broadcastActivityViewController.delegate = self;
+        [self presentViewController:broadcastActivityViewController animated:YES completion:nil];
+    }];
+}
+
+- (void)stopBroadcasting
+{
+    [self.broadcastController finishBroadcastWithHandler:^(NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) [self presentErrorControllerWithMessage:error.localizedDescription];
+            
+            [self transitionToNormalState];
+        });
+    }];
+}
+
+- (void)broadcastActivityViewController:(RPBroadcastActivityViewController *)broadcastActivityViewController didFinishWithBroadcastController:(RPBroadcastController *)broadcastController error:(NSError *)error
+{
+    [broadcastActivityViewController dismissViewControllerAnimated:YES completion:^{
+        if (error) {
+            [self presentErrorControllerWithMessage:error.localizedDescription];
+            return;
+        }
+        
+        [self.broadcastController startBroadcastWithHandler:^(NSError * _Nullable error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    [self presentErrorControllerWithMessage:error.localizedDescription];
+                } else {
+                    [self transitionToBroadcastingState];
+                }
+            });
+        }];
+    }];
+}
+
+- (void)broadcastController:(RPBroadcastController *)broadcastController didUpdateServiceInfo:(NSDictionary<NSString *,NSObject<NSCoding> *> *)serviceInfo
+{
+#ifdef DEBUG
+    NSLog(@"INFO: %@", serviceInfo);
+#endif
+}
+
+- (void)broadcastController:(RPBroadcastController *)broadcastController didUpdateBroadcastURL:(NSURL *)broadcastURL
+{
+#ifdef DEBUG
+    NSLog(@"BROADCAST URL = %@", broadcastURL);
+#endif
+}
+
+- (void)broadcastController:(RPBroadcastController *)broadcastController didFinishWithError:(NSError *)error
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self transitionToNormalState];
+        
+        if (error) [self presentErrorControllerWithMessage:error.localizedDescription];
+    });
+}
+
+- (void)transitionToBroadcastingState
+{
+    [self transitionToRecordingState];
+    [self _performLightTap];
+}
+
 #pragma mark - UI management for recording state
 
 - (void)transitionToRecordingState
@@ -197,7 +293,11 @@
 
 - (void)recordingStatusControllerDidSelectStop:(RecordingStatusViewController *)controller
 {
-    [self stopRecording];
+    if (self.broadcastController.isBroadcasting) {
+        [self stopBroadcasting];
+    } else {
+        [self stopRecording];
+    }
 }
 
 #pragma mark Haptics

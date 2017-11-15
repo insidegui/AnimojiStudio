@@ -13,6 +13,7 @@
 @protocol RecordingViewControllerDelegate <NSObject>
 
 - (void)recordingViewControllerDidTapRecord:(RecordingViewController *)controller;
+- (void)recordingViewControllerDidTapBroadcast:(RecordingViewController *)controller;
 
 @end
 
