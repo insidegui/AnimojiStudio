@@ -25,6 +25,8 @@
 @property (nonatomic, assign) BOOL micSessionStarted;
 @property (nonatomic, assign) BOOL appSessionStarted;
 
+@property (nonatomic, assign) BOOL isMicEnabled;
+
 @end
 
 @implementation RecordingCoordinator
@@ -36,6 +38,8 @@
 
 - (void)startRecordingWithAudio:(BOOL)shouldCaptureAudio frontCameraPreview:(BOOL)shouldCaptureFrontCamera
 {
+    self.isMicEnabled = shouldCaptureAudio;
+    
     if (!self.recorder) {
         self.recorder = [RPScreenRecorder sharedRecorder];
         self.recorder.microphoneEnabled = shouldCaptureAudio;
@@ -151,23 +155,32 @@
                                                      AVVideoScalingModeKey: AVVideoScalingModeResizeAspectFill
                                                      };
     
-    NSDictionary <NSString *, id> *audioSettings = @{
+    NSDictionary <NSString *, id> *micAudioSettings = @{
                                                      AVFormatIDKey: @(kAudioFormatMPEG4AAC),
                                                      AVNumberOfChannelsKey: @(2),
                                                      AVSampleRateKey: @(44100.0),
                                                      AVEncoderBitRateKey: @(128000)
                                                      };
     
+    NSDictionary <NSString *, id> *appAudioSettings = @{
+                                                     AVFormatIDKey: @(kAudioFormatMPEG4AAC),
+                                                     AVNumberOfChannelsKey: @(2),
+                                                     AVSampleRateKey: @(44100.0),
+                                                     AVEncoderBitRateKey: @(320000)
+                                                     };
+    
     self.videoInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeVideo outputSettings:videoSettings];
-    self.micInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:audioSettings];
-    self.appInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:audioSettings];
+    self.micInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:micAudioSettings];
+    self.appInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:appAudioSettings];
     
     self.videoInput.expectsMediaDataInRealTime = YES;
     self.micInput.expectsMediaDataInRealTime = YES;
     self.appInput.expectsMediaDataInRealTime = YES;
     
     [self.assetWriter addInput:self.videoInput];
-    [self.assetWriter addInput:self.micInput];
+    
+    if (self.isMicEnabled) [self.assetWriter addInput:self.micInput];
+    
     [self.assetWriter addInput:self.appInput];
     
     if (writerError) {
@@ -198,6 +211,8 @@
                 }
                 break;
             case RPSampleBufferTypeAudioMic:
+                if (!weakSelf.isMicEnabled) break;
+                
                 if (!weakSelf.micSessionStarted) {
                     weakSelf.micSessionStarted = YES;
                     [self.assetWriter startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp(sampleBuffer)];
@@ -210,6 +225,16 @@
             case RPSampleBufferTypeAudioApp:
                 if (!weakSelf.appSessionStarted) {
                     weakSelf.appSessionStarted = YES;
+                    
+                    // I tried to correct the drift that happens with AirPods, didn't work very well
+//                    CMTime baseTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
+//                    CMTime correctedTime = CMTimeSubtract(baseTime, CMTimeMakeWithSeconds(0.3, baseTime.timescale));
+//
+//                    #ifdef DEBUG
+//                    NSLog(@"baseTime = %.4f", CMTimeGetSeconds(baseTime));
+//                    NSLog(@"correctedTime = %.4f", CMTimeGetSeconds(correctedTime));
+//                    #endif
+                    
                     [self.assetWriter startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp(sampleBuffer)];
                 }
                 
