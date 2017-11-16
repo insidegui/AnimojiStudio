@@ -190,9 +190,16 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 
 - (void)showColorSheet
 {
+    [self hideControls];
+    
     if (!self.colorSheet) {
         self.colorSheet = [ColorSheetViewController new];
         [self.colorSheet addObserver:self forKeyPath:@"color" options:NSKeyValueObservingOptionNew context:nil];
+        
+        __weak typeof(self) weakSelf = self;
+        self.colorSheet.willClose = ^{
+            [weakSelf showControls];
+        };
     }
     
     id sceneBg = self.puppetView.scene.background.contents;

@@ -148,4 +148,11 @@
     [self didChangeValueForKey:@"color"];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if (self.willClose) self.willClose();
+}
+
 @end

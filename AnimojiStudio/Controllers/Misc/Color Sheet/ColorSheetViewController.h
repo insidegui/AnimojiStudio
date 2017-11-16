@@ -12,4 +12,6 @@
 
 @property (nonatomic, copy) UIColor *color;
 
+@property (nonatomic, copy) void (^willClose)(void);
+
 @end
