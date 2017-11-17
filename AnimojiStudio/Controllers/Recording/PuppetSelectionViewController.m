@@ -61,7 +61,6 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
 {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     
-    layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
