@@ -68,7 +68,10 @@
 
 - (void)_updateColorLayer
 {
-    self.colorLayer.path = CGPathCreateWithEllipseInRect(self.bounds, nil);
+    CGPathRef path = CGPathCreateWithEllipseInRect(self.bounds, nil);
+    self.colorLayer.path = path;
+    CGPathRelease(path);
+    
     self.colorLayer.frame = self.bounds;
     self.colorLayer.fillColor = self.color.CGColor;
 }
