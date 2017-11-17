@@ -54,11 +54,11 @@
     return self;
 }
 
-- (void)startAuthFlowFromViewController:(UIViewController *)presenter withError:(NSError **)outError
+- (BOOL)startAuthFlowFromViewController:(UIViewController *)presenter withError:(NSError **)outError
 {
     if (!self.playerStarted) {
         if (![self.player startWithClientId:self.auth.clientID audioController:self.coreAudioController allowCaching:YES error:outError]) {
-            return;
+            return false;
         }
         self.playerStarted = YES;
     }
@@ -66,7 +66,7 @@
     // not needed, already have a session
     if (self.auth.session.isValid) {
         [self.player loginWithAccessToken:self.auth.session.accessToken];
-        return;
+        return true;
     }
     
     if ([SPTAuth supportsApplicationAuthentication]) {
@@ -79,6 +79,8 @@
         self.safariController = [[SFSafariViewController alloc] initWithURL:[self.auth spotifyWebAuthenticationURL]];
         [presenter presentViewController:self.safariController animated:YES completion:nil];
     }
+    
+    return true;
 }
 
 - (BOOL)handleCallbackURL:(NSURL *)url

@@ -20,7 +20,7 @@
 
 @property (nonatomic, weak) id<SpotifyCoordinatorDelegate> delegate;
 
-- (void)startAuthFlowFromViewController:(UIViewController *)presenter withError:(NSError **)outError;
+- (BOOL)startAuthFlowFromViewController:(UIViewController *)presenter withError:(NSError **)outError;
 - (BOOL)handleCallbackURL:(NSURL *)url;
 
 - (void)playTrackID:(NSString *)trackID;

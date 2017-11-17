@@ -340,9 +340,9 @@
 - (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller
 {
     NSError *spotifyError;
-    [self.spotifyCoordinator startAuthFlowFromViewController:self withError:&spotifyError];
+    BOOL success = [self.spotifyCoordinator startAuthFlowFromViewController:self withError:&spotifyError];
     
-    if (spotifyError) {
+    if (!success && spotifyError) {
         [self presentErrorControllerWithMessage:spotifyError.localizedDescription];
     } else {
         [self startKaraokeFlow];
