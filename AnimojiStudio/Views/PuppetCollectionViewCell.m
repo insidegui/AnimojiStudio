@@ -59,7 +59,7 @@
     [super setSelected:selected];
     
     if (selected) {
-        self.puppetImageView.layer.transform = CATransform3DMakeScale(1.3, 1.3, 1);
+        self.puppetImageView.layer.transform = CATransform3DMakeScale(1.4, 1.4, 1);
     } else {
         self.puppetImageView.layer.transform = CATransform3DIdentity;
     }
