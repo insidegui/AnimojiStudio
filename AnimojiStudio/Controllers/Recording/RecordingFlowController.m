@@ -156,6 +156,13 @@
     [self _performEventTapWithError:NO];
 }
 
+#pragma mark - Puppet selection during recording
+
+- (void)recordingStatusController:(RecordingStatusViewController *)controller didChangePuppetToPuppetWithName:(NSString *)newPuppetName
+{
+    self.recordingController.puppetName = newPuppetName;
+}
+
 #pragma mark - Broadcasting
 
 - (void)recordingViewControllerDidTapBroadcast:(RecordingViewController *)controller
