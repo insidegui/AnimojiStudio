@@ -61,12 +61,24 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
 {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.scrollDirection = (self.usesHorizontalLayout) ? UICollectionViewScrollDirectionHorizontal : UICollectionViewScrollDirectionVertical;
     
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    CGFloat padding = 28;
-    CGFloat puppetsPerLine = 3;
-    CGFloat itemSize = (screenWidth / puppetsPerLine) - (padding * puppetsPerLine) + (padding * 2);
+    CGFloat itemSize;
+    CGFloat padding;
+    
+    if (self.usesHorizontalLayout) {
+        NSAssert(self.referenceHeight > 0, @"refereceHeight must be greater than zero when usesHorizontalLayout == YES");
+        padding = 4;
+        itemSize = self.referenceHeight - padding * 2;
+    } else {
+        padding = 28;
+        
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat puppetsPerLine = 3;
+        
+        itemSize = (screenWidth / puppetsPerLine) - (padding * puppetsPerLine) + (padding * 2);
+    }
+    
     layout.sectionInset = UIEdgeInsetsMake(padding, padding, padding, padding);
     layout.itemSize = CGSizeMake(itemSize, itemSize);
     

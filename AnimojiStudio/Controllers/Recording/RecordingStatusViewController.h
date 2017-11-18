@@ -13,6 +13,7 @@
 @protocol RecordingStatusViewControllerDelegate <NSObject>
 
 - (void)recordingStatusControllerDidSelectStop:(RecordingStatusViewController *)controller;
+- (void)recordingStatusController:(RecordingStatusViewController *)controller didChangePuppetToPuppetWithName:(NSString *)newPuppetName;
 
 @end
 

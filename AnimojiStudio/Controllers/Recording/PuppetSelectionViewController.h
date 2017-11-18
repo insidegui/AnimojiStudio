@@ -20,4 +20,7 @@
 
 @property (nonatomic, weak) id<PuppetSelectionDelegate> delegate;
 
+@property (nonatomic, assign) BOOL usesHorizontalLayout;
+@property (nonatomic, assign) CGFloat referenceHeight;
+
 @end
