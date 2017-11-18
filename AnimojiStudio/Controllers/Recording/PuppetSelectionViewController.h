@@ -23,4 +23,6 @@
 @property (nonatomic, assign) BOOL usesHorizontalLayout;
 @property (nonatomic, assign) CGFloat referenceHeight;
 
+- (void)selectPuppetWithName:(NSString *)puppetName;
+
 @end

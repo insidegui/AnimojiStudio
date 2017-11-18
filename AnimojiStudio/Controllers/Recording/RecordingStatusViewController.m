@@ -34,6 +34,13 @@
     [self build];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.puppetsController selectPuppetWithName:self.preSelectedPuppetName];
+}
+
 - (void)build
 {
     self.backgroundView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
@@ -65,6 +72,8 @@
     [self.puppetsController.view.leadingAnchor constraintEqualToAnchor:self.backgroundView.contentView.leadingAnchor constant:16].active = YES;
     [self.puppetsController.view.trailingAnchor constraintEqualToAnchor:self.backgroundView.contentView.trailingAnchor constant:-16].active = YES;
     [self.puppetsController.view.topAnchor constraintEqualToAnchor:self.backgroundView.contentView.topAnchor constant:8].active = YES;
+    
+    [self.puppetsController selectPuppetWithName:self.preSelectedPuppetName];
 }
 
 - (void)_installRecordingIndicator

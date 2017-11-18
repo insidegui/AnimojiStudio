@@ -20,6 +20,7 @@
 @interface RecordingStatusViewController : UIViewController
 
 @property (nonatomic, weak) id<RecordingStatusViewControllerDelegate> delegate;
+@property (nonatomic, copy) NSString *preSelectedPuppetName;
 
 - (void)startCountingTime;
 - (void)stopCountingTime;

@@ -104,6 +104,16 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
     }
 }
 
+- (void)selectPuppetWithName:(NSString *)puppetName
+{
+    if (!self.usesHorizontalLayout) return;
+    
+    if (![self.puppetNames containsObject:puppetName]) return;
+    NSUInteger idx = [self.puppetNames indexOfObject:puppetName];
+    
+    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:idx inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+}
+
 #pragma mark - CollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

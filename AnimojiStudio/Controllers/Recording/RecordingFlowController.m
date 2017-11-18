@@ -264,6 +264,7 @@
     [self.recordingController hideControls];
     
     [self installStatusWindow];
+    self.statusController.preSelectedPuppetName = self.recordingController.puppetName;
     [self.statusController startCountingTime];
 }
 
