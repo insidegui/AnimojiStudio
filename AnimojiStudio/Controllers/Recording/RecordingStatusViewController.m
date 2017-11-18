@@ -48,7 +48,7 @@
 
 - (void)_installPuppetSelection
 {
-    CGFloat height = 44;
+    CGFloat height = 38;
     
     self.puppetsController = [PuppetSelectionViewController new];
     self.puppetsController.delegate = self;

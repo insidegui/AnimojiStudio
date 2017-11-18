@@ -40,7 +40,10 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
     
-    self.collectionView.alwaysBounceVertical = YES;
+    self.collectionView.alwaysBounceVertical = !self.usesHorizontalLayout;
+    self.collectionView.alwaysBounceHorizontal = self.usesHorizontalLayout;
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     
     [self.collectionView setOpaque:YES];
     self.collectionView.backgroundColor = [UIColor whiteColor];
