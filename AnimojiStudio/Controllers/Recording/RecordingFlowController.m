@@ -31,6 +31,7 @@
 @property (nonatomic, weak) RecordingViewController *recordingController;
 
 @property (nonatomic, strong) UIWindow *statusWindow;
+@property (nonatomic, strong) UIWindow *externalWindow;
 
 @property (nonatomic, strong) RecordingStatusViewController *statusController;
 
@@ -87,10 +88,13 @@
     RecordingViewController *recording = [RecordingViewController new];
     recording.delegate = self;
     
-    [self.navigationController pushViewController:recording animated:YES];
-    recording.puppetName = puppetName;
-    
     self.recordingController = recording;
+    
+    if (![self presentRecordingControllerOnExternalDisplayIfAvailable]) {
+        [self.navigationController pushViewController:recording animated:YES];
+    }
+    
+    recording.puppetName = puppetName;
 }
 
 #pragma mark - Recording
@@ -377,6 +381,25 @@
     
     UINotificationFeedbackType type = isError ? UINotificationFeedbackTypeError : UINotificationFeedbackTypeSuccess;
     [self.notificationHaptics notificationOccurred:type];
+}
+
+#pragma mark External display support
+
+- (BOOL)presentRecordingControllerOnExternalDisplayIfAvailable
+{
+    if ([UIScreen screens].count <= 1) return NO;
+    
+    UIScreen *externalScreen = [UIScreen screens].lastObject;
+    
+    self.externalWindow = [[UIWindow alloc] initWithFrame:externalScreen.bounds];
+    self.externalWindow.backgroundColor = [UIColor blackColor];
+    self.externalWindow.screen = externalScreen;
+    
+    [self.externalWindow setRootViewController:self.recordingController];
+    
+    [self.externalWindow setHidden:NO];
+    
+    return YES;
 }
 
 @end
