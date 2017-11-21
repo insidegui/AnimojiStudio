@@ -44,6 +44,8 @@
 
 @property (nonatomic, strong) KaraokeFlowController *karaokeFlow;
 
+@property (nonatomic, assign) BOOL controlsHidden;
+
 @end
 
 @interface RecordingFlowController (PuppetSelection) <PuppetSelectionDelegate>
@@ -76,6 +78,11 @@
     [self installChildViewController:self.navigationController];
     
     self.puppetSelectionController = selection;
+    
+    UISwipeGestureRecognizer *hideSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toggleHideAllControls:)];
+    [hideSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
+    [hideSwipe setNumberOfTouchesRequired:2];
+    [self.view addGestureRecognizer:hideSwipe];
 }
 
 #pragma mark - Puppet Selection
@@ -297,7 +304,8 @@
     }
     
     self.statusWindow.transform = CGAffineTransformMakeScale(0.01, 0.01);
-    [self.statusWindow setHidden:NO];
+    
+    if (!self.controlsHidden) [self.statusWindow setHidden:NO];
     
     [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:1.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
         self.statusWindow.alpha = 1;
@@ -377,6 +385,32 @@
     
     UINotificationFeedbackType type = isError ? UINotificationFeedbackTypeError : UINotificationFeedbackTypeSuccess;
     [self.notificationHaptics notificationOccurred:type];
+}
+
+#pragma mark Hide controls
+
+- (IBAction)toggleHideAllControls:(id)sender
+{
+    if (self.controlsHidden) {
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.statusWindow setAlpha:1];
+        [self.recordingController showControls];
+        
+        self.controlsHidden = NO;
+    } else {
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.statusWindow setAlpha:0];
+        [self.recordingController hideControls];
+        
+        self.controlsHidden = YES;
+    }
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return self.controlsHidden;
 }
 
 @end
