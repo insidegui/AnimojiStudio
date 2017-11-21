@@ -406,9 +406,15 @@
     }
     
     [self setNeedsStatusBarAppearanceUpdate];
+    [self setNeedsUpdateOfHomeIndicatorAutoHidden];
 }
 
 - (BOOL)prefersStatusBarHidden
+{
+    return self.controlsHidden;
+}
+
+- (BOOL)prefersHomeIndicatorAutoHidden
 {
     return self.controlsHidden;
 }
