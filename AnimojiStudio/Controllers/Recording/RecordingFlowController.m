@@ -139,7 +139,7 @@
 
 - (void)startRecording
 {
-    if (self.karaokeTrackID) [self.spotifyCoordinator playTrackID:self.karaokeTrackID];
+    if (self.karaokeTrackID && !self.spotifyCoordinator.isPlaying) [self.spotifyCoordinator playTrackID:self.karaokeTrackID];
     
     self.coordinator = [RecordingCoordinator new];
     self.coordinator.delegate = self;
@@ -363,6 +363,20 @@
     } else {
         [self startKaraokeFlow];
     }
+}
+
+- (BOOL)recordingViewControllerDidTapKaraokePlayPause:(RecordingViewController *)controller
+{
+    if (self.karaokeTrackID) {
+        if (self.spotifyCoordinator.isPlaying) {
+            [self.spotifyCoordinator stop];
+            return NO;
+        } else {
+            [self.spotifyCoordinator playTrackID:self.karaokeTrackID];
+            return YES;
+        }
+    }
+    return NO;
 }
 
 #pragma mark Haptics
