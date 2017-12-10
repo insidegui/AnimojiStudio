@@ -112,6 +112,8 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 {
     [self.puppetView resetTracking];
     [self.delegate recordingViewControllerDidTapRecord:self];
+    
+    [self.settingsController resetKaraokePlayButtonState];
 }
 
 - (IBAction)broadcastTapped:(id)sender
@@ -166,6 +168,11 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 - (void)recordingSettingsViewControllerDidTapKaraoke:(RecordingSettingsViewController *)controller
 {
     [self.delegate recordingViewControllerDidTapKaraoke:self];
+}
+
+- (BOOL)recordingSettingsViewControllerDidTapKaraokePlayPause:(RecordingSettingsViewController *)controller
+{
+    return [self.delegate recordingViewControllerDidTapKaraokePlayPause:self];
 }
 
 - (void)recordingSettingsViewControllerDidTapChooseBackgroundColor:(RecordingSettingsViewController *)controller

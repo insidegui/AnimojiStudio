@@ -15,6 +15,7 @@
 - (void)recordingViewControllerDidTapRecord:(RecordingViewController *)controller;
 - (void)recordingViewControllerDidTapBroadcast:(RecordingViewController *)controller;
 - (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller;
+- (BOOL)recordingViewControllerDidTapKaraokePlayPause:(RecordingViewController *)controller;
 
 @end
 

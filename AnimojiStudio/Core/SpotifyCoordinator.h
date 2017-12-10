@@ -19,6 +19,7 @@
 @interface SpotifyCoordinator : NSObject
 
 @property (nonatomic, weak) id<SpotifyCoordinatorDelegate> delegate;
+@property (nonatomic, readwrite) BOOL isPlaying;
 
 - (BOOL)startAuthFlowFromViewController:(UIViewController *)presenter withError:(NSError **)outError;
 - (BOOL)handleCallbackURL:(NSURL *)url;

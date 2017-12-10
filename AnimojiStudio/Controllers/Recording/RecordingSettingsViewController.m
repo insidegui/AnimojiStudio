@@ -26,6 +26,7 @@
 @property (nonatomic, strong) ASColorWell *bgColorWell;
 
 @property (nonatomic, strong) UIButton *karaokeButton;
+@property (nonatomic, strong) UIButton *karaokePlayButton;
 
 @end
 
@@ -137,11 +138,25 @@
 
 - (void)_installKaraokeUI
 {
+    UIStackView *karaokeStackView = [UIStackView new];
+    karaokeStackView.alignment = UIStackViewAlignmentCenter;
+    karaokeStackView.axis = UILayoutConstraintAxisHorizontal;
+    karaokeStackView.spacing = 8;
+    karaokeStackView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     self.karaokeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.karaokeButton setTitle:@"Configure Karaoke" forState:UIControlStateNormal];
     [self.karaokeButton addTarget:self action:@selector(karaokeTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [karaokeStackView addArrangedSubview:self.karaokeButton];
+
+    self.karaokePlayButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
+    [self.karaokePlayButton addTarget:self action:@selector(karaokePlayPauseTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.karaokePlayButton.widthAnchor constraintEqualToConstant:30].active = YES;
+    [self.karaokePlayButton.heightAnchor constraintEqualToConstant:30].active = YES;
+    [karaokeStackView addArrangedSubview:self.karaokePlayButton];
     
-    [self.settingsStack addArrangedSubview:self.karaokeButton];
+    [self.settingsStack addArrangedSubview:karaokeStackView];
 }
 
 - (IBAction)tappedColorWell:(id)sender
@@ -152,6 +167,19 @@
 - (IBAction)karaokeTapped:(id)sender
 {
     [self.delegate recordingSettingsViewControllerDidTapKaraoke:self];
+}
+
+- (IBAction)karaokePlayPauseTapped:(id)sender
+{
+    if ([self.delegate recordingSettingsViewControllerDidTapKaraokePlayPause:self]) {
+        [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewStop"] forState:UIControlStateNormal];
+    } else {
+        [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
+    }
+}
+
+- (void)resetKaraokePlayButtonState {
+    [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
 }
 
 - (void)_toggleSettingsBackgroundEffectWithColor:(UIColor *)color
