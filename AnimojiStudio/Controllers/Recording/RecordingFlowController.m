@@ -151,6 +151,8 @@
     }
     
     [self _performLightTap];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 - (void)stopRecording
@@ -161,6 +163,8 @@
     [self transitionToNormalState];
     
     [self _performEventTapWithError:NO];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
 #pragma mark - Puppet selection during recording
