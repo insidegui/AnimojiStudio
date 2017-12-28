@@ -79,7 +79,7 @@
             }
         }];
     } else {
-        [self _runWebViewAuth];
+        [self _runWebViewAuthFromPresenter:presenter];
     }
 #else
     [self _runWebViewAuthFromPresenter:presenter];
