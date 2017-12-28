@@ -25,7 +25,7 @@ When you press record, the song will automatically start playing and will be rec
 
 Make sure your phone is not on silent mode.
 
-*Karaoke mode requires a premium Spotify subscription and the Spotify app to be installed on your iPhone. Recording both music and the microphone at the same time is not supported, make sure you turn off microphone recording before using the karaoke feature.* **I don't recommend using AirPods for karaoke mode because it introduces a delay that makes the audio and video get out of sync.**
+*Karaoke mode requires a premium Spotify subscription. Recording both music and the microphone at the same time is not supported, make sure you turn off microphone recording before using the karaoke feature.* **I don't recommend using AirPods for karaoke mode because it introduces a delay that makes the audio and video get out of sync.**
 
 ![screens](./screenshots/AnimojiStudio_Screens2.png)
 

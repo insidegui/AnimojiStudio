@@ -69,6 +69,7 @@
         return true;
     }
     
+#ifdef SPOTIFY_APP_AUTH
     if ([SPTAuth supportsApplicationAuthentication]) {
         [[UIApplication sharedApplication] openURL:[self.auth spotifyAppAuthenticationURL] options:@{} completionHandler:^(BOOL success) {
             if (!success) {
@@ -76,11 +77,19 @@
             }
         }];
     } else {
-        self.safariController = [[SFSafariViewController alloc] initWithURL:[self.auth spotifyWebAuthenticationURL]];
-        [presenter presentViewController:self.safariController animated:YES completion:nil];
+        [self _runWebViewAuth];
     }
+#else
+    [self _runWebViewAuthFromPresenter:presenter];
+#endif
     
     return true;
+}
+
+- (void)_runWebViewAuthFromPresenter:(UIViewController *)presenter
+{
+    self.safariController = [[SFSafariViewController alloc] initWithURL:[self.auth spotifyWebAuthenticationURL]];
+    [presenter presentViewController:self.safariController animated:YES completion:nil];
 }
 
 - (BOOL)handleCallbackURL:(NSURL *)url
