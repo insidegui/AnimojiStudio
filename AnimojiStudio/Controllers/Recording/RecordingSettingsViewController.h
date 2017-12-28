@@ -30,6 +30,8 @@
 @property (nonatomic, weak) UIViewController *containerViewController;
 
 - (void)resizeWindow;
+- (void)setKaraokePlayButtonHidden:(BOOL)isHidden;
 - (void)resetKaraokePlayButtonState;
+- (void)setAllowsMicrophoneRecording:(BOOL)allow;
 
 @end

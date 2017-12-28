@@ -351,6 +351,8 @@
     self.karaokeTrackID = trackID;
     
     [controller dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.recordingController becomeKaraoke];
 }
 
 - (void)recordingViewControllerDidTapKaraoke:(RecordingViewController *)controller

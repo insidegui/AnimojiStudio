@@ -27,6 +27,7 @@
 
 - (void)hideControls;
 - (void)showControls;
+- (void)becomeKaraoke;
 
 @property (nonatomic, assign, getter=isMicrophoneEnabled) BOOL microphoneEnabled;
 

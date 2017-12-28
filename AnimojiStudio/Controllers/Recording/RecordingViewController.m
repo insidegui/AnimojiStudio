@@ -140,6 +140,13 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     }];
 }
 
+- (void)becomeKaraoke
+{
+    [self.settingsController setKaraokePlayButtonHidden:NO];
+    [self.settingsController setAllowsMicrophoneRecording:NO];
+    [self setMicrophoneEnabled:NO];
+}
+
 #pragma mark - Settings
 
 - (void)_installSettingsUI

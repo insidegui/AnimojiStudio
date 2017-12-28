@@ -150,11 +150,13 @@
     [karaokeStackView addArrangedSubview:self.karaokeButton];
 
     self.karaokePlayButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
+    [self.karaokePlayButton setImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
     [self.karaokePlayButton addTarget:self action:@selector(karaokePlayPauseTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.karaokePlayButton.widthAnchor constraintEqualToConstant:30].active = YES;
     [self.karaokePlayButton.heightAnchor constraintEqualToConstant:30].active = YES;
     [karaokeStackView addArrangedSubview:self.karaokePlayButton];
+    
+    [self.karaokePlayButton setHidden:YES];
     
     [self.settingsStack addArrangedSubview:karaokeStackView];
 }
@@ -172,14 +174,19 @@
 - (IBAction)karaokePlayPauseTapped:(id)sender
 {
     if ([self.delegate recordingSettingsViewControllerDidTapKaraokePlayPause:self]) {
-        [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewStop"] forState:UIControlStateNormal];
+        [self.karaokePlayButton setImage:[UIImage imageNamed:@"previewStop"] forState:UIControlStateNormal];
     } else {
-        [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
+        [self.karaokePlayButton setImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
     }
 }
 
 - (void)resetKaraokePlayButtonState {
-    [self.karaokePlayButton setBackgroundImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
+    [self.karaokePlayButton setImage:[UIImage imageNamed:@"previewPlay"] forState:UIControlStateNormal];
+}
+
+- (void)setKaraokePlayButtonHidden:(BOOL)isHidden
+{
+    [self.karaokePlayButton setHidden:isHidden];
 }
 
 - (void)_toggleSettingsBackgroundEffectWithColor:(UIColor *)color
@@ -211,6 +218,13 @@
     _microphoneEnabled = microphoneEnabled;
     
     self.microphoneSwitch.on = _microphoneEnabled;
+}
+
+- (void)setAllowsMicrophoneRecording:(BOOL)allow
+{
+    [self.microphoneSettingsStack setHidden:!allow];
+    
+    if (!allow) [self setMicrophoneEnabled:NO];
 }
 
 #pragma mark Floating window layout management
