@@ -51,6 +51,8 @@
     self.auth.sessionUserDefaultsKey = @"SpotifySession";
     self.auth.requestedScopes = @[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope];
     
+    self.isPlaying = NO;
+    
     return self;
 }
 
@@ -114,15 +116,22 @@
 
 - (void)playTrackID:(NSString *)trackID
 {
-    [self.player playSpotifyURI:trackID startingWithIndex:0 startingWithPosition:0 callback:^(NSError *error) {
-        if (error) {
-            NSLog(@"Spotify playback error: %@", error);
-        }
-    }];
+    self.isPlaying = YES;
+    
+    if (!self.player.playbackState.isPlaying) {
+        [self.player playSpotifyURI:trackID startingWithIndex:0 startingWithPosition:0 callback:^(NSError *error) {
+            if (error) {
+                NSLog(@"Spotify playback error: %@", error);
+                self.isPlaying = NO;
+            }
+        }];
+    }
 }
 
 - (void)stop
 {
+    self.isPlaying = NO;
+    
     [self.player setIsPlaying:NO callback:^(NSError *error) {
         NSLog(@"setIsPlaying error: %@", error);
     }];

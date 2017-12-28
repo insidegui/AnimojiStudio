@@ -13,6 +13,7 @@
 @protocol RecordingSettingsViewControllerDelegate <NSObject>
 
 - (void)recordingSettingsViewControllerDidTapKaraoke:(RecordingSettingsViewController *)controller;
+- (BOOL)recordingSettingsViewControllerDidTapKaraokePlayPause:(RecordingSettingsViewController *)controller;
 - (void)recordingSettingsViewController:(RecordingSettingsViewController *)controller didChangeMicrophoneEnabled:(BOOL)isEnabled;
 - (void)recordingSettingsViewControllerDidTapChooseBackgroundColor:(RecordingSettingsViewController *)controller;
 
@@ -29,5 +30,6 @@
 @property (nonatomic, weak) UIViewController *containerViewController;
 
 - (void)resizeWindow;
+- (void)resetKaraokePlayButtonState;
 
 @end
