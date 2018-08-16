@@ -15,6 +15,8 @@
 
 #import "SpotifyCoordinator.h"
 
+#import "MemojiSupport.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) RecordingFlowController *recordingFlow;
@@ -41,7 +43,12 @@
     }
     
     self.recordingFlow = [RecordingFlowController new];
-    
+
+    if ([[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/AvatarUI.framework"] load]) {
+        BOOL swizzleSuccessful = [MemojiSupport swizzleMemojiRelatedMethods];
+        self.recordingFlow.supportsPersonalAnimoji = swizzleSuccessful;
+    }
+
     self.recordingFlow.spotifyCoordinator = self.spotifyCoordinator;
     
     [self.window setRootViewController:self.recordingFlow];

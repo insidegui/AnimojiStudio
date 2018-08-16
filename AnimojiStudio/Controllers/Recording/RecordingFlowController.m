@@ -22,12 +22,15 @@
 #import "SpotifyCoordinator.h"
 #import "KaraokeFlowController.h"
 
+#import "AVTAvatarStore.h"
+#import "AVTAvatarLibraryViewController.h"
+
 @import ReplayKit;
 
 @interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, weak) PuppetSelectionViewController *puppetSelectionController;
+@property (nonatomic, weak) __kindof UIViewController *puppetSelectionController;
 @property (nonatomic, weak) RecordingViewController *recordingController;
 
 @property (nonatomic, strong) UIWindow *statusWindow;
@@ -69,9 +72,17 @@
     [super viewDidLoad];
     
     [self _setupHaptics];
-    
-    PuppetSelectionViewController *selection = [PuppetSelectionViewController new];
-    selection.delegate = self;
+
+    __kindof UIViewController *selection;
+
+    if (self.supportsPersonalAnimoji) {
+        AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
+        selection = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
+    } else {
+        PuppetSelectionViewController *puppetSelection = [PuppetSelectionViewController new];
+        puppetSelection.delegate = self;
+        selection = puppetSelection;
+    }
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:selection];
     

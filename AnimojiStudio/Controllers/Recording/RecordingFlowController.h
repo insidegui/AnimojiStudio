@@ -14,5 +14,6 @@
 
 @property (nonatomic, weak) SpotifyCoordinator *spotifyCoordinator;
 @property (nonatomic, copy) NSString *karaokeTrackID;
+@property (nonatomic, assign) BOOL supportsPersonalAnimoji;
 
 @end
