@@ -19,6 +19,7 @@
 #import "UIViewController+Children.h"
 
 #import "WelcomeViewController.h"
+#import "MemojiSelectionViewController.h"
 
 @interface AvatarSelectionFlowController () <WelcomeViewControllerDelegate, PuppetSelectionDelegate>
 
@@ -59,7 +60,8 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_handleMemojiSelectedWithNotification:) name:DidSelectMemoji object:nil];
 
-    [self.navigationController pushViewController:libraryController animated:YES];
+    MemojiSelectionViewController *selection = [MemojiSelectionViewController memojiSelectionViewControllerWithEmbeddedController:libraryController];
+    [self.navigationController pushViewController:selection animated:YES];
 }
 
 - (void)_handleMemojiSelectedWithNotification:(NSNotification *)note

@@ -21,6 +21,7 @@
 		DDA31AD0212703B80058B989 /* AvatarSelectionFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31ACF212703B80058B989 /* AvatarSelectionFlowController.m */; };
 		DDA31AD3212707910058B989 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31AD2212707910058B989 /* WelcomeViewController.m */; };
 		DDA31AD8212709170058B989 /* BigButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31AD7212709170058B989 /* BigButton.m */; };
+		DDA31ADB212718760058B989 /* MemojiSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31ADA212718760058B989 /* MemojiSelectionViewController.m */; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -68,6 +69,8 @@
 		DDA31AD2212707910058B989 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		DDA31AD6212709170058B989 /* BigButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigButton.h; sourceTree = "<group>"; };
 		DDA31AD7212709170058B989 /* BigButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigButton.m; sourceTree = "<group>"; };
+		DDA31AD9212718760058B989 /* MemojiSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemojiSelectionViewController.h; sourceTree = "<group>"; };
+		DDA31ADA212718760058B989 /* MemojiSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemojiSelectionViewController.m; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				DDA31AD2212707910058B989 /* WelcomeViewController.m */,
 				DDDBBC091FB7987A00291D45 /* PuppetSelectionViewController.h */,
 				DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */,
+				DDA31AD9212718760058B989 /* MemojiSelectionViewController.h */,
+				DDA31ADA212718760058B989 /* MemojiSelectionViewController.m */,
 			);
 			path = "Avatar Selection";
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
 				DDA31AD8212709170058B989 /* BigButton.m in Sources */,
+				DDA31ADB212718760058B989 /* MemojiSelectionViewController.m in Sources */,
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
 				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
