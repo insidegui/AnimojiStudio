@@ -14,4 +14,9 @@
 
 @end
 
+@interface AVTAvatar: NSObject
++ (instancetype)avatarWithDataRepresentation:(NSData *)data error:(NSError **)outError;
+@end
+
 #define ASPuppet NSClassFromString(@"AVTPuppet")
+#define ASAvatar NSClassFromString(@"AVTAvatar")

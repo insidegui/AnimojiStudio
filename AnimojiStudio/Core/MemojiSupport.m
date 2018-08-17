@@ -10,6 +10,14 @@
 
 #import <objc/runtime.h>
 
+const NSNotificationName DidSelectMemoji = @"DidSelectMemojiNotificationName";
+
+@interface MemojiSupport ()
+
+@property (readonly) NSArray *mutableLibraryItems;
+
+@end
+
 @implementation MemojiSupport
 
 + (BOOL)swizzleMemojiRelatedMethods
@@ -40,6 +48,15 @@
 
     method_exchangeImplementations(m5, m6);
 
+    Class AVTAvatarLibraryModel = NSClassFromString(@"AVTAvatarLibraryModel");
+    if (!AVTAvatarLibraryModel) return NO;
+
+    Method m7 = class_getInstanceMethod(AVTAvatarLibraryModel, NSSelectorFromString(@"performActionOnItemAtIndex:"));
+    if (!m7) return NO;
+
+    Method m8 = class_getInstanceMethod([self class], @selector(performActionOnItemAtIndex:));
+    method_exchangeImplementations(m7, m8);
+
     return YES;
 }
 
@@ -62,6 +79,18 @@
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     path = [path stringByAppendingPathComponent:@"MemojiStore"];
     return [NSURL fileURLWithPath:path];
+}
+
+- (void)performActionOnItemAtIndex:(NSUInteger)index
+{
+    if (index >= self.mutableLibraryItems.count) return;
+
+    id item = self.mutableLibraryItems[index];
+
+    NSData *memojiData = [[item valueForKey:@"avatarRecord"] valueForKey:@"avatarData"];
+    if (!memojiData) return;
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:DidSelectMemoji object:memojiData];
 }
 
 @end

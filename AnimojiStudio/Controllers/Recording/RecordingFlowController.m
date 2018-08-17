@@ -25,6 +25,9 @@
 #import "AVTAvatarStore.h"
 #import "AVTAvatarLibraryViewController.h"
 
+#import "MemojiSupport.h"
+#import "AVTPuppet.h"
+
 @import ReplayKit;
 
 @interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
@@ -78,6 +81,9 @@
     if (self.supportsPersonalAnimoji) {
         AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
         selection = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
+        [[NSNotificationCenter defaultCenter] addObserverForName:DidSelectMemoji object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            [self pushRecordingControllerWithMemojiData:note.object];
+        }];
     } else {
         PuppetSelectionViewController *puppetSelection = [PuppetSelectionViewController new];
         puppetSelection.delegate = self;
@@ -108,6 +114,19 @@
     [self.navigationController pushViewController:recording animated:YES];
     recording.puppetName = puppetName;
     
+    self.recordingController = recording;
+}
+
+- (void)pushRecordingControllerWithMemojiData:(NSData *)memojiData
+{
+    RecordingViewController *recording = [RecordingViewController new];
+    recording.delegate = self;
+
+    [self.navigationController pushViewController:recording animated:YES];
+
+    NSError *error;
+    recording.avatar = [AVTAvatar avatarWithDataRepresentation:memojiData error:&error];
+
     self.recordingController = recording;
 }
 

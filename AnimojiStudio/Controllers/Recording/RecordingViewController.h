@@ -24,6 +24,7 @@
 @property (nonatomic, weak) id<RecordingViewControllerDelegate> delegate;
 
 @property (nonatomic, copy) NSString *puppetName;
+@property (nonatomic, strong) id avatar;
 
 - (void)hideControls;
 - (void)showControls;

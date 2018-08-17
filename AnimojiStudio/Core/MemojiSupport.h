@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern const NSNotificationName DidSelectMemoji;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MemojiSupport : NSObject
