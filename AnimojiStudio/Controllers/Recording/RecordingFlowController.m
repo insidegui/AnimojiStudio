@@ -32,7 +32,7 @@
 
 @import ReplayKit;
 
-@interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
+@interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate, AvatarSelectionDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
 
@@ -82,20 +82,7 @@
     [self _setupHaptics];
 
     self.avatarSelectionFlow = [AvatarSelectionFlowController new];
-
-//    __kindof UIViewController *selection;
-//
-//    if (self.supportsMemoji) {
-//        AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
-//        selection = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
-//        [[NSNotificationCenter defaultCenter] addObserverForName:DidSelectMemoji object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-//            [self pushRecordingControllerWithMemojiData:note.object];
-//        }];
-//    } else {
-//        PuppetSelectionViewController *puppetSelection = [PuppetSelectionViewController new];
-//        puppetSelection.delegate = self;
-//        selection = puppetSelection;
-//    }
+    self.avatarSelectionFlow.delegate = self;
 
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.avatarSelectionFlow];
     
@@ -114,30 +101,22 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
-#pragma mark - Puppet Selection
+#pragma mark - Recording initialization
 
-- (void)puppetSelectionViewController:(PuppetSelectionViewController *)controller didSelectPuppetWithName:(NSString *)puppetName
+- (void)avatarSelectionFlowController:(AvatarSelectionFlowController *)controller didSelectAvatarInstance:(AVTAvatarInstance *)avatar
 {
-    self.karaokeTrackID = nil;
-    
-    RecordingViewController *recording = [RecordingViewController new];
-    recording.delegate = self;
-    
-    [self.navigationController pushViewController:recording animated:YES];
-    recording.puppetName = puppetName;
-    
-    self.recordingController = recording;
+    BOOL isMemoji = [avatar isKindOfClass:[ASPuppet class]];
+    [self pushRecordingControllerWithAvatarInstance:avatar isMemoji:isMemoji];
 }
 
-- (void)pushRecordingControllerWithMemojiData:(NSData *)memojiData
+- (void)pushRecordingControllerWithAvatarInstance:(AVTAvatarInstance *)instance isMemoji:(BOOL)isMemoji
 {
     RecordingViewController *recording = [RecordingViewController new];
     recording.delegate = self;
 
     [self.navigationController pushViewController:recording animated:YES];
 
-    NSError *error;
-    recording.avatar = [AVTAvatar avatarWithDataRepresentation:memojiData error:&error];
+    recording.avatar = instance;
 
     self.recordingController = recording;
 }

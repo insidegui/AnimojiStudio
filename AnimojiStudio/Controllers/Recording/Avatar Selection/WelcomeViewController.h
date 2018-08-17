@@ -8,6 +8,17 @@
 
 @import UIKit;
 
+@class WelcomeViewController;
+
+@protocol WelcomeViewControllerDelegate <NSObject>
+
+- (void)welcomeViewControllerDidSelectMemojiMode:(WelcomeViewController *)controller;
+- (void)welcomeViewControllerDidSelectClassicAnimojiMode:(WelcomeViewController *)controller;
+
+@end
+
 @interface WelcomeViewController : UIViewController
+
+@property (nonatomic, weak) id<WelcomeViewControllerDelegate> delegate;
 
 @end

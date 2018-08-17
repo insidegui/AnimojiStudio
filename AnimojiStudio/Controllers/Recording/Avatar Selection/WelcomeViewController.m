@@ -41,6 +41,13 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -102,12 +109,12 @@
 
 - (IBAction)didTapMemojiButton:(id)sender
 {
-
+    [self.delegate welcomeViewControllerDidSelectMemojiMode:self];
 }
 
 - (IBAction)didTapAnimojiButton:(id)sender
 {
-
+    [self.delegate welcomeViewControllerDidSelectClassicAnimojiMode:self];
 }
 
 - (NSArray <UIView *> *)_welcomeAnimationParticipants

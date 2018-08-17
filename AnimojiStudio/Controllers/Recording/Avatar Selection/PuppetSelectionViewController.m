@@ -102,6 +102,8 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
     if (self.collectionView.indexPathsForSelectedItems.count) {
         [self.collectionView deselectItemAtIndexPath:self.collectionView.indexPathsForSelectedItems.firstObject animated:NO];
     }
+
+    self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
 }
 
 - (void)selectPuppetWithName:(NSString *)puppetName

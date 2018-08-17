@@ -1,7 +1,8 @@
 @import Foundation;
 @import SceneKit;
 
-@class AVTAvatarInstance;
+@interface AVTAvatarInstance: NSObject
+@end
 
 @interface AVTPuppet: NSObject
 
