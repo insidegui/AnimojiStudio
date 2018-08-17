@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MemojiSupport : NSObject
 
-+ (BOOL)swizzleMemojiRelatedMethods;
++ (void)prepareMemojiRuntime;
++ (BOOL)deviceSupportsMemoji;
 
 @end
 

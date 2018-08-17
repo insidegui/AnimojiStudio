@@ -78,7 +78,7 @@
 
     __kindof UIViewController *selection;
 
-    if (self.supportsPersonalAnimoji) {
+    if (self.supportsMemoji) {
         AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
         selection = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
         [[NSNotificationCenter defaultCenter] addObserverForName:DidSelectMemoji object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {

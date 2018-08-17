@@ -44,10 +44,9 @@
     
     self.recordingFlow = [RecordingFlowController new];
 
-    if ([[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/AvatarUI.framework"] load]) {
-        BOOL swizzleSuccessful = [MemojiSupport swizzleMemojiRelatedMethods];
-        self.recordingFlow.supportsPersonalAnimoji = swizzleSuccessful;
-    }
+    [MemojiSupport prepareMemojiRuntime];
+
+    self.recordingFlow.supportsMemoji = [MemojiSupport deviceSupportsMemoji];
 
     self.recordingFlow.spotifyCoordinator = self.spotifyCoordinator;
     
