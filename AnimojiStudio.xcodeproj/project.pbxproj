@@ -18,6 +18,9 @@
 		DD7135ED1FBBE62900AAA5E7 /* KaraokeFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135EC1FBBE62900AAA5E7 /* KaraokeFlowController.m */; };
 		DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */; };
 		DD7135F31FBC86D800AAA5E7 /* SongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7135F21FBC86D800AAA5E7 /* SongTableViewCell.m */; };
+		DDA31AD0212703B80058B989 /* AvatarSelectionFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31ACF212703B80058B989 /* AvatarSelectionFlowController.m */; };
+		DDA31AD3212707910058B989 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31AD2212707910058B989 /* WelcomeViewController.m */; };
+		DDA31AD8212709170058B989 /* BigButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA31AD7212709170058B989 /* BigButton.m */; };
 		DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */; };
 		DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA51FB8C615000EAE11 /* RecordingStatusViewController.m */; };
 		DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCE6CA91FB8D9EF000EAE11 /* SharingFlowController.m */; };
@@ -59,6 +62,12 @@
 		DD7135EF1FBBE68300AAA5E7 /* SpotifySearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotifySearchViewController.m; sourceTree = "<group>"; };
 		DD7135F11FBC86D800AAA5E7 /* SongTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongTableViewCell.h; sourceTree = "<group>"; };
 		DD7135F21FBC86D800AAA5E7 /* SongTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongTableViewCell.m; sourceTree = "<group>"; };
+		DDA31ACE212703B80058B989 /* AvatarSelectionFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AvatarSelectionFlowController.h; sourceTree = "<group>"; };
+		DDA31ACF212703B80058B989 /* AvatarSelectionFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvatarSelectionFlowController.m; sourceTree = "<group>"; };
+		DDA31AD1212707910058B989 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		DDA31AD2212707910058B989 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		DDA31AD6212709170058B989 /* BigButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigButton.h; sourceTree = "<group>"; };
+		DDA31AD7212709170058B989 /* BigButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigButton.m; sourceTree = "<group>"; };
 		DDCE6C9D1FB87117000EAE11 /* RecordingCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCoordinator.h; sourceTree = "<group>"; };
 		DDCE6C9E1FB87117000EAE11 /* RecordingCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCoordinator.m; sourceTree = "<group>"; };
 		DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingStatusViewController.h; sourceTree = "<group>"; };
@@ -139,6 +148,19 @@
 			path = Karaoke;
 			sourceTree = "<group>";
 		};
+		DDA31AD52127087E0058B989 /* Avatar Selection */ = {
+			isa = PBXGroup;
+			children = (
+				DDA31ACE212703B80058B989 /* AvatarSelectionFlowController.h */,
+				DDA31ACF212703B80058B989 /* AvatarSelectionFlowController.m */,
+				DDA31AD1212707910058B989 /* WelcomeViewController.h */,
+				DDA31AD2212707910058B989 /* WelcomeViewController.m */,
+				DDDBBC091FB7987A00291D45 /* PuppetSelectionViewController.h */,
+				DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */,
+			);
+			path = "Avatar Selection";
+			sourceTree = "<group>";
+		};
 		DDCE6C9C1FB87104000EAE11 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +172,8 @@
 				DDF9BB6121263E2800F19D2E /* MemojiSupport.m */,
 				DD7135E71FBBDACD00AAA5E7 /* SpotifyCoordinator.h */,
 				DD7135E81FBBDACD00AAA5E7 /* SpotifyCoordinator.m */,
+				DDA31AD6212709170058B989 /* BigButton.h */,
+				DDA31AD7212709170058B989 /* BigButton.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -243,10 +267,9 @@
 		DDDBBC121FB79AE700291D45 /* Recording */ = {
 			isa = PBXGroup;
 			children = (
+				DDA31AD52127087E0058B989 /* Avatar Selection */,
 				DDDBBC061FB797DA00291D45 /* RecordingFlowController.h */,
 				DDDBBC071FB797DA00291D45 /* RecordingFlowController.m */,
-				DDDBBC091FB7987A00291D45 /* PuppetSelectionViewController.h */,
-				DDDBBC0A1FB7987A00291D45 /* PuppetSelectionViewController.m */,
 				DDDBBC191FB7A28D00291D45 /* RecordingViewController.h */,
 				DDDBBC1A1FB7A28D00291D45 /* RecordingViewController.m */,
 				DDCE6CA41FB8C615000EAE11 /* RecordingStatusViewController.h */,
@@ -384,6 +407,7 @@
 				DDDBBBEE1FB7918000291D45 /* ErrorViewController.m in Sources */,
 				DDF87E3C1FBCE63A00F1A24C /* RecordingSettingsViewController.m in Sources */,
 				DDCE6CAD1FB8DAB8000EAE11 /* VideoPreviewViewController.m in Sources */,
+				DDA31AD8212709170058B989 /* BigButton.m in Sources */,
 				DD7135DD1FBB99E900AAA5E7 /* ColorSheetPresentationController.m in Sources */,
 				DDDBBC081FB797DA00291D45 /* RecordingFlowController.m in Sources */,
 				DDCE6CA61FB8C615000EAE11 /* RecordingStatusViewController.m in Sources */,
@@ -394,8 +418,10 @@
 				DDCE6C9F1FB87117000EAE11 /* RecordingCoordinator.m in Sources */,
 				DD7135F01FBBE68300AAA5E7 /* SpotifySearchViewController.m in Sources */,
 				DDDBBC0E1FB798C100291D45 /* UIViewController+Children.m in Sources */,
+				DDA31AD3212707910058B989 /* WelcomeViewController.m in Sources */,
 				DD7135DE1FBB99E900AAA5E7 /* ColorSheetViewController.m in Sources */,
 				DDCE6CAA1FB8D9EF000EAE11 /* SharingFlowController.m in Sources */,
+				DDA31AD0212703B80058B989 /* AvatarSelectionFlowController.m in Sources */,
 				DDF9BB6221263E2800F19D2E /* MemojiSupport.m in Sources */,
 				DDDBBBEB1FB7917F00291D45 /* AppDelegate.m in Sources */,
 				DDDBBC0B1FB7987A00291D45 /* PuppetSelectionViewController.m in Sources */,

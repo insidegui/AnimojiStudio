@@ -28,11 +28,16 @@
 #import "MemojiSupport.h"
 #import "AVTPuppet.h"
 
+#import "AvatarSelectionFlowController.h"
+
 @import ReplayKit;
 
 @interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
+
+@property (nonatomic, strong) AvatarSelectionFlowController *avatarSelectionFlow;
+
 @property (nonatomic, weak) __kindof UIViewController *puppetSelectionController;
 @property (nonatomic, weak) RecordingViewController *recordingController;
 
@@ -76,30 +81,37 @@
     
     [self _setupHaptics];
 
-    __kindof UIViewController *selection;
+    self.avatarSelectionFlow = [AvatarSelectionFlowController new];
 
-    if (self.supportsMemoji) {
-        AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
-        selection = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
-        [[NSNotificationCenter defaultCenter] addObserverForName:DidSelectMemoji object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-            [self pushRecordingControllerWithMemojiData:note.object];
-        }];
-    } else {
-        PuppetSelectionViewController *puppetSelection = [PuppetSelectionViewController new];
-        puppetSelection.delegate = self;
-        selection = puppetSelection;
-    }
-    
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:selection];
+//    __kindof UIViewController *selection;
+//
+//    if (self.supportsMemoji) {
+//        AVTAvatarStore *store = [[ASAvatarStore alloc] initWithDomainIdentifier:[NSBundle mainBundle].bundleIdentifier];
+//        selection = [[ASAvatarLibraryViewController alloc] initWithAvatarStore:store];
+//        [[NSNotificationCenter defaultCenter] addObserverForName:DidSelectMemoji object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+//            [self pushRecordingControllerWithMemojiData:note.object];
+//        }];
+//    } else {
+//        PuppetSelectionViewController *puppetSelection = [PuppetSelectionViewController new];
+//        puppetSelection.delegate = self;
+//        selection = puppetSelection;
+//    }
+
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.avatarSelectionFlow];
     
     [self installChildViewController:self.navigationController];
-    
-    self.puppetSelectionController = selection;
-    
+
     UISwipeGestureRecognizer *hideSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toggleHideAllControls:)];
     [hideSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
     [hideSwipe setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:hideSwipe];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 #pragma mark - Puppet Selection
