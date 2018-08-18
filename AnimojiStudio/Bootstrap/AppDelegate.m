@@ -37,7 +37,7 @@
     [self.window setBackgroundColor:[UIColor whiteColor]];
     
     if (![[NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/AvatarKit.framework"] load]) {
-        [self showErrorMessage:@"This app is only supported on iPhone X"];
+        [self showErrorMessage:@"This app is only supported on devices with a TrueDepth camera."];
         [self.window makeKeyAndVisible];
         return YES;
     }
