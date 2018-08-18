@@ -55,6 +55,15 @@
     [self _performWelcomeAnimationIfNeeded];
 }
 
+- (CGFloat)_horizontalPadding
+{
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return 180;
+    } else {
+        return 22;
+    }
+}
+
 - (void)_installTitle
 {
     self.titleLabel = [UILabel new];
@@ -65,8 +74,8 @@
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
 
     [self.view addSubview:self.titleLabel];
-    [self.titleLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:22].active = YES;
-    [self.titleLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:22].active = YES;
+    [self.titleLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:[self _horizontalPadding]].active = YES;
+    [self.titleLabel.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:[self _horizontalPadding]].active = YES;
 }
 
 - (void)_installSubtitle
@@ -82,7 +91,7 @@
     [self.view addSubview:self.subtitleLabel];
     [self.subtitleLabel.leadingAnchor constraintEqualToAnchor:self.titleLabel.leadingAnchor].active = YES;
     [self.subtitleLabel.topAnchor constraintEqualToAnchor:self.titleLabel.bottomAnchor constant:16].active = YES;
-    [self.subtitleLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-22].active = YES;
+    [self.subtitleLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-[self _horizontalPadding]].active = YES;
 }
 
 - (void)_installButtons
@@ -102,8 +111,8 @@
 
     [self.view addSubview:self.buttonStack];
 
-    [self.buttonStack.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:22].active = YES;
-    [self.buttonStack.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-22].active = YES;
+    [self.buttonStack.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:[self _horizontalPadding]].active = YES;
+    [self.buttonStack.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-[self _horizontalPadding]].active = YES;
     [self.buttonStack.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor constant:50].active = YES;
 }
 
