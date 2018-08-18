@@ -35,10 +35,15 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.welcomeController = [WelcomeViewController new];
-    self.welcomeController.delegate = self;
+    if ([MemojiSupport deviceSupportsMemoji]) {
+        self.welcomeController = [WelcomeViewController new];
+        self.welcomeController.delegate = self;
 
-    [self installChildViewController:self.welcomeController];
+        [self installChildViewController:self.welcomeController];
+    } else {
+        self.title = @"Select Character";
+        [self _showAnimojiPuppetSelection];
+    }
 }
 
 - (void)welcomeViewControllerDidSelectMemojiMode:(WelcomeViewController *)controller
@@ -48,7 +53,7 @@
 
 - (void)welcomeViewControllerDidSelectClassicAnimojiMode:(WelcomeViewController *)controller
 {
-    [self _pushAnimojiPuppetSelection];
+    [self _showAnimojiPuppetSelection];
 }
 
 #pragma mark Memoji
@@ -82,12 +87,16 @@
 
 #pragma mark Animoji
 
-- (void)_pushAnimojiPuppetSelection
+- (void)_showAnimojiPuppetSelection
 {
     PuppetSelectionViewController *controller = [PuppetSelectionViewController new];
     controller.delegate = self;
 
-    [self.navigationController pushViewController:controller animated:YES];
+    if ([MemojiSupport deviceSupportsMemoji]) {
+        [self.navigationController pushViewController:controller animated:YES];
+    } else {
+        [self installChildViewController:controller];
+    }
 }
 
 - (void)puppetSelectionViewController:(PuppetSelectionViewController *)controller didSelectPuppetWithName:(NSString *)puppetName
