@@ -22,12 +22,23 @@
 #import "SpotifyCoordinator.h"
 #import "KaraokeFlowController.h"
 
+#import "AVTAvatarStore.h"
+#import "AVTAvatarLibraryViewController.h"
+
+#import "MemojiSupport.h"
+#import "AVTPuppet.h"
+
+#import "AvatarSelectionFlowController.h"
+
 @import ReplayKit;
 
-@interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate>
+@interface RecordingFlowController () <RPBroadcastActivityViewControllerDelegate, RPBroadcastControllerDelegate, AvatarSelectionDelegate>
 
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, weak) PuppetSelectionViewController *puppetSelectionController;
+
+@property (nonatomic, strong) AvatarSelectionFlowController *avatarSelectionFlow;
+
+@property (nonatomic, weak) __kindof UIViewController *puppetSelectionController;
 @property (nonatomic, weak) RecordingViewController *recordingController;
 
 @property (nonatomic, strong) UIWindow *statusWindow;
@@ -69,34 +80,44 @@
     [super viewDidLoad];
     
     [self _setupHaptics];
-    
-    PuppetSelectionViewController *selection = [PuppetSelectionViewController new];
-    selection.delegate = self;
-    
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:selection];
+
+    self.avatarSelectionFlow = [AvatarSelectionFlowController new];
+    self.avatarSelectionFlow.delegate = self;
+
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.avatarSelectionFlow];
     
     [self installChildViewController:self.navigationController];
-    
-    self.puppetSelectionController = selection;
-    
+
     UISwipeGestureRecognizer *hideSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(toggleHideAllControls:)];
     [hideSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
     [hideSwipe setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:hideSwipe];
 }
 
-#pragma mark - Puppet Selection
-
-- (void)puppetSelectionViewController:(PuppetSelectionViewController *)controller didSelectPuppetWithName:(NSString *)puppetName
+- (void)viewWillAppear:(BOOL)animated
 {
-    self.karaokeTrackID = nil;
-    
+    [super viewWillAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+#pragma mark - Recording initialization
+
+- (void)avatarSelectionFlowController:(AvatarSelectionFlowController *)controller didSelectAvatarInstance:(AVTAvatarInstance *)avatar
+{
+    BOOL isMemoji = [avatar isKindOfClass:[ASPuppet class]];
+    [self pushRecordingControllerWithAvatarInstance:avatar isMemoji:isMemoji];
+}
+
+- (void)pushRecordingControllerWithAvatarInstance:(AVTAvatarInstance *)instance isMemoji:(BOOL)isMemoji
+{
     RecordingViewController *recording = [RecordingViewController new];
     recording.delegate = self;
-    
+
     [self.navigationController pushViewController:recording animated:YES];
-    recording.puppetName = puppetName;
-    
+
+    recording.avatar = instance;
+
     self.recordingController = recording;
 }
 

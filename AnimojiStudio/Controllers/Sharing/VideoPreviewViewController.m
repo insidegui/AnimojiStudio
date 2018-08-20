@@ -10,6 +10,8 @@
 
 #import "ASAppearance.h"
 
+#import "BigButton.h"
+
 @import AVFoundation;
 
 @interface VideoPreviewViewController ()
@@ -20,7 +22,7 @@
 @property (nonatomic, strong) AVPlayerLayer *videoLayer;
 
 @property (nonatomic, strong) UIView *videoView;
-@property (nonatomic, strong) UIButton *shareButton;
+@property (nonatomic, strong) BigButton *shareButton;
 
 @end
 
@@ -56,19 +58,11 @@
     [self.videoView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
     [self.videoView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     
-    self.shareButton = [UIButton new];
+    self.shareButton = [BigButton new];
     [self.shareButton setTitle:@"Share your creation" forState:UIControlStateNormal];
-    self.shareButton.backgroundColor = [UIColor primaryColor];
-    self.shareButton.tintColor = [UIColor whiteColor];
-    self.shareButton.titleLabel.textColor = [UIColor whiteColor];
-    self.shareButton.titleLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
-    self.shareButton.layer.cornerRadius = 12;
-    
-    self.shareButton.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.shareButton];
     
-    [self.shareButton.heightAnchor constraintEqualToConstant:50].active = YES;
     [self.shareButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:22].active = YES;
     [self.shareButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-22].active = YES;
     [self.shareButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-22].active = YES;

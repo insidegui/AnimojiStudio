@@ -99,6 +99,11 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     self.avatarInstance = (AVTAvatarInstance *)[AVTPuppet puppetNamed:_puppetName options:nil];
 }
 
+- (void)setAvatar:(id)avatar
+{
+    self.avatarInstance = (AVTAvatarInstance *)avatar;
+}
+
 - (void)setAvatarInstance:(AVTAvatarInstance *)avatarInstance
 {
     _avatarInstance = avatarInstance;

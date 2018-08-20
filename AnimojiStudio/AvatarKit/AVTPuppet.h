@@ -1,7 +1,8 @@
 @import Foundation;
 @import SceneKit;
 
-@class AVTAvatarInstance;
+@interface AVTAvatarInstance: NSObject
+@end
 
 @interface AVTPuppet: NSObject
 
@@ -14,4 +15,9 @@
 
 @end
 
+@interface AVTAvatar: NSObject
++ (instancetype)avatarWithDataRepresentation:(NSData *)data error:(NSError **)outError;
+@end
+
 #define ASPuppet NSClassFromString(@"AVTPuppet")
+#define ASAvatar NSClassFromString(@"AVTAvatar")
