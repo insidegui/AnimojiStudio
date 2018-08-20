@@ -38,6 +38,7 @@
     self.messageLabel = [UILabel new];
     self.messageLabel.textAlignment = NSTextAlignmentCenter;
     self.messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.messageLabel.numberOfLines = 0;
     self.messageLabel.textColor = [UIColor lightGrayColor];
     [self.view addSubview:self.messageLabel];
     
