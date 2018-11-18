@@ -10,6 +10,24 @@
 
 #import <objc/runtime.h>
 
+NSURL *animojiStudioStoreLocation(void);
+
+@interface AVTCoreDataCloudKitMirroringConfiguration: NSObject
++ (BOOL)cloudKitMirroringEnabled;
+@end
+
+@interface AVTCoreDataPersistentStoreConfiguration: NSObject
+
++ (instancetype)localConfigurationWithStoreLocation:(id)location environment:(id)environment;
+
+@end
+
+@interface AVTUIEnvironment: NSObject
+
++ (instancetype)defaultEnvironment;
+
+@end
+
 @import os.log;
 
 const NSNotificationName DidSelectMemoji = @"DidSelectMemojiNotificationName";
@@ -79,7 +97,7 @@ const NSNotificationName DidSelectMemoji = @"DidSelectMemojiNotificationName";
 
     method_exchangeImplementations(m1, m2);
 
-    Method m3 = class_getClassMethod(AVTUIEnvironment, NSSelectorFromString(@"storeLocation"));
+    Method m3 = class_getInstanceMethod(AVTUIEnvironment, NSSelectorFromString(@"storeLocation"));
     if (!m3) {
         os_log_error(_log, "Method storeLocation not found on class AVTUIEnvironment. Memoji support disabled.");
         return NO;
@@ -89,7 +107,7 @@ const NSNotificationName DidSelectMemoji = @"DidSelectMemojiNotificationName";
 
     method_exchangeImplementations(m3, m4);
 
-    Method m5 = class_getClassMethod(AVTUIEnvironment, NSSelectorFromString(@"imageStoreLocation"));
+    Method m5 = class_getInstanceMethod(AVTUIEnvironment, NSSelectorFromString(@"imageStoreLocation"));
     if (!m5) {
         os_log_error(_log, "Method imageStoreLocation not found on class AVTUIEnvironment. Memoji support disabled.");
         return NO;
@@ -116,16 +134,42 @@ const NSNotificationName DidSelectMemoji = @"DidSelectMemojiNotificationName";
     Method m8 = class_getInstanceMethod([self class], @selector(performActionOnItemAtIndex:));
     method_exchangeImplementations(m7, m8);
 
+    if (!NSClassFromString(@"AVTCoreDataPersistentStoreConfiguration")) {
+        os_log_error(_log, "Class AVTCoreDataPersistentStoreConfiguration not found. Memoji support disabled.");
+        return NO;
+    }
+
+    Method m9 = class_getClassMethod(NSClassFromString(@"AVTCoreDataPersistentStoreConfiguration"), NSSelectorFromString(@"remoteConfigurationWithDaemonClient:environment:"));
+    Method m10 = class_getClassMethod([self class], @selector(localConfigurationWithStoreLocation:environment:));
+    method_exchangeImplementations(m9, m10);
+
+    if (!NSClassFromString(@"AVTCoreDataCloudKitMirroringConfiguration")) {
+        os_log_error(_log, "Class AVTCoreDataCloudKitMirroringConfiguration not found. Memoji support disabled.");
+        return NO;
+    }
+
+    Method m11 = class_getClassMethod(NSClassFromString(@"AVTCoreDataCloudKitMirroringConfiguration"), @selector(cloudKitMirroringEnabled));
+    Method m12 = class_getClassMethod([self class], @selector(cloudKitMirroringEnabled));
+    method_exchangeImplementations(m11, m12);
+
     os_log_info(_log, "Memoji runtime initialized successfully");
 
     return YES;
 }
 
++ (BOOL)cloudKitMirroringEnabled
+{
+    return NO;
+}
+
++ (id)localConfigurationWithStoreLocation:(id)location environment:(id)environment
+{
+    return [NSClassFromString(@"AVTCoreDataPersistentStoreConfiguration") localConfigurationWithStoreLocation:animojiStudioStoreLocation() environment:[NSClassFromString(@"AVTUIEnvironment") defaultEnvironment]];
+}
+
 + (NSURL *)storeLocationForDomainIdentifier:(id)identifier environment:(id)environment
 {
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    path = [path stringByAppendingPathComponent:@"MemojiStore"];
-    return [NSURL fileURLWithPath:path];
+    return animojiStudioStoreLocation();
 }
 
 + (NSURL *)storeLocation
@@ -173,3 +217,14 @@ const NSNotificationName DidSelectMemoji = @"DidSelectMemojiNotificationName";
 }
 
 @end
+
+NSURL *animojiStudioStoreLocation(void) {
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    path = [path stringByAppendingPathComponent:@"MemojiStore"];
+    return [NSURL fileURLWithPath:path];
+}
+
+int override_AVTUIIsAvatarSyncEnabled(void)
+{
+    return 0;
+}
