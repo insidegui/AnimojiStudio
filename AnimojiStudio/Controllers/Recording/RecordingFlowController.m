@@ -26,7 +26,7 @@
 #import "AVTAvatarLibraryViewController.h"
 
 #import "MemojiSupport.h"
-#import "AVTPuppet.h"
+#import "AVTAnimoji.h"
 
 #import "AvatarSelectionFlowController.h"
 
@@ -105,7 +105,7 @@
 
 - (void)avatarSelectionFlowController:(AvatarSelectionFlowController *)controller didSelectAvatarInstance:(AVTAvatarInstance *)avatar
 {
-    BOOL isMemoji = [avatar isKindOfClass:[ASPuppet class]];
+    BOOL isMemoji = [avatar isKindOfClass:[ASAnimoji class]];
     [self pushRecordingControllerWithAvatarInstance:avatar isMemoji:isMemoji];
 }
 
@@ -143,7 +143,7 @@
 - (void)recordingCoordinatorDidFinishRecording:(RecordingCoordinator *)coordinator
 {
     self.sharingFlow = [SharingFlowController new];
-    
+    self.sharingFlow.modalPresentationStyle = UIModalPresentationFullScreen;
     self.sharingFlow.videoURL = self.coordinator.videoURL;
     
     [self.navigationController presentViewController:self.sharingFlow animated:YES completion:nil];
