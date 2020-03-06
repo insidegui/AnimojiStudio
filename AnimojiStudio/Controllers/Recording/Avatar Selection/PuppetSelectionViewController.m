@@ -8,7 +8,7 @@
 
 #import "PuppetSelectionViewController.h"
 
-#import "AVTPuppet.h"
+#import "AVTAnimoji.h"
 
 #import "PuppetCollectionViewCell.h"
 
@@ -29,7 +29,7 @@ NSString * const kPuppetCellIdentifier = @"PuppetCell";
     [super viewDidLoad];
     
     self.title = @"Choose Character";
-    self.puppetNames = [ASPuppet puppetNames];
+    self.puppetNames = [ASAnimoji puppetNames];
     
     [self build];
 }

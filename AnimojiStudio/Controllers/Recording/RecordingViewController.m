@@ -8,7 +8,7 @@
 
 #import "RecordingViewController.h"
 
-#import "AVTPuppet.h"
+#import "AVTAnimoji.h"
 
 #import "ASPuppetView.h"
 #import "ASColorWell.h"
@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) ASPuppetView *puppetView;
 
-@property (nonatomic, strong) AVTPuppet *puppet;
+@property (nonatomic, strong) AVTAnimoji *puppet;
 @property (nonatomic, strong) AVTAvatarInstance *avatarInstance;
 
 @property (nonatomic, strong) ColorSheetViewController *colorSheet;
@@ -62,7 +62,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
     self.puppetView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.puppetView];
 
-    if (self.avatarInstance) [self.puppetView setAvatarInstance:self.avatarInstance];
+    if (self.avatarInstance) [self.puppetView setAvatar:self.avatarInstance];
 
     [self.puppetView resetTracking];
     
@@ -96,7 +96,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 {
     _puppetName = [puppetName copy];
     
-    self.avatarInstance = (AVTAvatarInstance *)[AVTPuppet puppetNamed:_puppetName options:nil];
+    self.avatarInstance = (AVTAvatarInstance *)[AVTAnimoji animojiNamed:_puppetName];
 }
 
 - (void)setAvatar:(id)avatar
@@ -108,7 +108,7 @@ NSString * const kMicrophoneEnabled = @"kMicrophoneEnabled";
 {
     _avatarInstance = avatarInstance;
     
-    [self.puppetView setAvatarInstance:_avatarInstance];
+    [self.puppetView setAvatar:_avatarInstance];
 }
 
 #pragma mark - Actions

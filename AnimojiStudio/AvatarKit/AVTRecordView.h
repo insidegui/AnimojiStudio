@@ -1,10 +1,10 @@
 @import Foundation;
 @import ARKit;
 
-@class AVTPuppet;
-#import "AVTAvatarView.h"
+@class AVTAvatar;
+#import "AVTView.h"
 
-@interface AVTPuppetView: AVTAvatarView
+@interface AVTRecordView: AVTView
 
 @property (getter=isPreviewing, nonatomic, readonly) bool previewing;
 @property (getter=isRecording, nonatomic, readonly) bool recording;
@@ -23,9 +23,11 @@
 - (void)faceIsFullyActive;
 - (void)fadePuppetToWhite:(int)arg;
 
+- (void)setAvatar:(id)arg1;
+
 - (void)setup;
 
-@property (readonly) AVTPuppet *puppet;
+@property (readonly) AVTAnimoji *puppet;
 
 @property (nonatomic, readonly) ARSession *arSession;
 

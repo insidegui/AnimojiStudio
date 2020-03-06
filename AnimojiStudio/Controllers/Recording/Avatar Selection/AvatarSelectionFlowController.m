@@ -14,7 +14,7 @@
 #import "AVTAvatarLibraryViewController.h"
 
 #import "MemojiSupport.h"
-#import "AVTPuppet.h"
+#import "AVTAnimoji.h"
 
 #import "UIViewController+Children.h"
 
@@ -101,7 +101,7 @@
 
 - (void)puppetSelectionViewController:(PuppetSelectionViewController *)controller didSelectPuppetWithName:(NSString *)puppetName
 {
-    AVTAvatarInstance *instance = (AVTAvatarInstance *)[AVTPuppet puppetNamed:puppetName options:nil];
+    AVTAvatarInstance *instance = (AVTAvatarInstance *)[AVTAnimoji animojiNamed:puppetName];
     [self.delegate avatarSelectionFlowController:self didSelectAvatarInstance:instance];
 }
 

@@ -4,11 +4,11 @@
 @interface AVTAvatarInstance: NSObject
 @end
 
-@interface AVTPuppet: NSObject
+@interface AVTAnimoji: NSObject
 
-+ (instancetype)puppetNamed:(NSString *)name options:(NSDictionary *)options;
-+ (NSArray <NSString *> *)puppetNames;
-+ (UIImage *)thumbnailForPuppetNamed:(NSString *)name options:(NSDictionary *)options;
++ (instancetype)animojiNamed:(NSString *)name;
++ (NSArray <NSString *> *)animojiNames;
++ (UIImage *)thumbnailForAnimojiNamed:(NSString *)name options:(NSDictionary *)options;
 
 @property (readonly) SCNNode *avatarNode;
 @property (readonly) SCNNode *lightingNode;
@@ -19,5 +19,5 @@
 + (instancetype)avatarWithDataRepresentation:(NSData *)data error:(NSError **)outError;
 @end
 
-#define ASPuppet NSClassFromString(@"AVTPuppet")
+#define ASAnimoji NSClassFromString(@"AVTAnimoji")
 #define ASAvatar NSClassFromString(@"AVTAvatar")

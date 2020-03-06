@@ -8,9 +8,9 @@
 
 @import UIKit;
 
-#import "AVTPuppetView.h"
+#import "AVTRecordView.h"
 
-@interface ASPuppetView : AVTPuppetView
+@interface ASPuppetView : AVTRecordView
 
 - (void)resetTracking;
 

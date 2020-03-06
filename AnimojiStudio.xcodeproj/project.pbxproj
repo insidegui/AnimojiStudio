@@ -44,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC59AD272411C031000F6244 /* AVTRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTRecordView.h; sourceTree = "<group>"; };
+		DC59AD282411C032000F6244 /* AVTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTView.h; sourceTree = "<group>"; };
+		DC59AD292411C032000F6244 /* AVTAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTAvatar.h; sourceTree = "<group>"; };
+		DC59AD2A2411C032000F6244 /* AVTAnimoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTAnimoji.h; sourceTree = "<group>"; };
 		DD1D03BA1FBB0AB2006A47A6 /* ARConfiguration+Overrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARConfiguration+Overrides.h"; sourceTree = "<group>"; };
 		DD1D03BB1FBB0AB2006A47A6 /* ARConfiguration+Overrides.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ARConfiguration+Overrides.m"; sourceTree = "<group>"; };
 		DD7135AD1FBB86E800AAA5E7 /* ASColorWell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASColorWell.h; sourceTree = "<group>"; };
@@ -88,9 +92,6 @@
 		DDDBBBF51FB7918000291D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDDBBBF71FB7918000291D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDDBBBF81FB7918000291D45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DDDBBC001FB794B100291D45 /* AVTPuppetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTPuppetView.h; sourceTree = "<group>"; };
-		DDDBBC011FB794B100291D45 /* AVTAvatarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTAvatarView.h; sourceTree = "<group>"; };
-		DDDBBC021FB794B100291D45 /* AVTPuppet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTPuppet.h; sourceTree = "<group>"; };
 		DDDBBC061FB797DA00291D45 /* RecordingFlowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingFlowController.h; sourceTree = "<group>"; };
 		DDDBBC071FB797DA00291D45 /* RecordingFlowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingFlowController.m; sourceTree = "<group>"; };
 		DDDBBC091FB7987A00291D45 /* PuppetSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuppetSelectionViewController.h; sourceTree = "<group>"; };
@@ -228,9 +229,10 @@
 		DDDBBBFF1FB794A400291D45 /* AvatarKit */ = {
 			isa = PBXGroup;
 			children = (
-				DDDBBC011FB794B100291D45 /* AVTAvatarView.h */,
-				DDDBBC021FB794B100291D45 /* AVTPuppet.h */,
-				DDDBBC001FB794B100291D45 /* AVTPuppetView.h */,
+				DC59AD2A2411C032000F6244 /* AVTAnimoji.h */,
+				DC59AD292411C032000F6244 /* AVTAvatar.h */,
+				DC59AD272411C031000F6244 /* AVTRecordView.h */,
+				DC59AD282411C032000F6244 /* AVTView.h */,
 			);
 			path = AvatarKit;
 			sourceTree = "<group>";
@@ -568,7 +570,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8C7439RJLG;
+				DEVELOPMENT_TEAM = CUCB33MFQZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AnimojiStudio/AvatarKit",
@@ -592,7 +594,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8C7439RJLG;
+				DEVELOPMENT_TEAM = CUCB33MFQZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AnimojiStudio/AvatarKit",
@@ -601,7 +603,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/AnimojiStudio/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = fun.Animoji;
+				PRODUCT_BUNDLE_IDENTIFIER = AnimojiStudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = "";

@@ -10,7 +10,7 @@
 
 #import "ASPuppetView.h"
 
-#import "AVTPuppet.h"
+#import "AVTAnimoji.h"
 
 @import SceneKit;
 

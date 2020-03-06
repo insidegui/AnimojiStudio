@@ -8,7 +8,7 @@
 
 #import "PuppetCollectionViewCell.h"
 
-#import "AVTPuppet.h"
+#import "AVTAnimoji.h"
 
 @interface PuppetCollectionViewCell ()
 
@@ -51,7 +51,7 @@
 {
     if (!_puppetName.length) return;
     
-    self.puppetImageView.image = [ASPuppet thumbnailForPuppetNamed:_puppetName options:nil];
+    self.puppetImageView.image = [ASAnimoji thumbnailForAnimojiNamed:_puppetName options:nil];
 }
 
 - (void)setSelected:(BOOL)selected
