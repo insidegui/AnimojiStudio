@@ -61,7 +61,7 @@
         
         [weakSelf done:nil];
     }];
-    
+    activityController.popoverPresentationController.sourceView = self.previewController.shareButton;
     [self presentViewController:activityController animated:YES completion:nil];
 }
 

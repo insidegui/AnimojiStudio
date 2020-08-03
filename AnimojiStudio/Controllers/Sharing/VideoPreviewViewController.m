@@ -22,7 +22,6 @@
 @property (nonatomic, strong) AVPlayerLayer *videoLayer;
 
 @property (nonatomic, strong) UIView *videoView;
-@property (nonatomic, strong) BigButton *shareButton;
 
 @end
 

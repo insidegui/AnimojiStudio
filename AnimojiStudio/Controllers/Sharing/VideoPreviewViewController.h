@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class BigButton;
 @class VideoPreviewViewController;
 
 @protocol VideoPreviewDelegate <NSObject>
@@ -17,7 +17,7 @@
 @end
 
 @interface VideoPreviewViewController : UIViewController
-
+@property (nonatomic, strong) BigButton *shareButton;
 @property (nonatomic, weak) id<VideoPreviewDelegate> delegate;
 
 @property (nonatomic, copy) NSURL *videoURL;
